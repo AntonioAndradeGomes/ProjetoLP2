@@ -7,18 +7,26 @@ import java.util.Calendar;
 public class Produto {
     private String nome;
     private double preco;
+    private String validade2;
     private Date validade;
     private String codigo;
     private boolean verificavalidade;
     private long unidadesAdiquiridas;
 
 
-    public Produto(String nome, double preco, Date validade, String codigo, long unidadesAdiquiridas) {
+    public Produto(String nome, double preco, String validade, 
+            String codigo, long unidadesAdiquiridas) throws ParseException {
+        
         this.nome = nome;
         this.preco = preco;
-        this.validade = validade;
+        setVal(validade);
         this.codigo = codigo;
         this.unidadesAdiquiridas = unidadesAdiquiridas;
+    }
+    public void setVal(String validade) throws ParseException{
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date verifica = sdf.parse(validade);
+        this.validade = verifica;
     }
 
     public String getNome() {
@@ -75,6 +83,19 @@ public class Produto {
             return false;
         }
     }
-    
+    public boolean Validade(){
+        Calendar validadeproduto = Calendar.getInstance();
+        validadeproduto.setTime(this.getValidade());
+        //Criando um objeto calendar com a data atual.
+        Calendar hoje = Calendar.getInstance();
+        //Calculo da idade
+        if (validadeproduto.get(Calendar.YEAR) > hoje.get(Calendar.YEAR)){
+            return true;
+        }else if (validadeproduto.get(Calendar.YEAR) == hoje.get(Calendar.YEAR) && validadeproduto.get(Calendar.MONTH) >= hoje.get(Calendar.MONTH) && validadeproduto.get(Calendar.DAY_OF_WEEK) > hoje.get(Calendar.DAY_OF_WEEK)){
+                return true;
+        }else{
+            return false;
+        }
+    }
    
 }
