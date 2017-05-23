@@ -1,4 +1,4 @@
-package rodolfo;
+package ProjetoLP2;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,6 @@ public class Cliente{
     private String cpf;
     private double divida = 0;
     private double troco;
-    ArrayList<Estoque> estoque = new ArrayList();
     
     public Cliente(String nome, String cpf){
         this.nome = nome;
@@ -46,11 +45,11 @@ public class Cliente{
             }
         }
     }
-    public void Comprar(int codigo){
-        if (estoque.indexOf(codigo) != -1){
-            int indice = estoque.indexOf(codigo);
-            //estoque.set(estoque.indexOf(codigo), estoque.get(indice).quantidade - 1);
-            estoque.remove(codigo);
-        }
-    }
+//    public void Comprar(int codigo){
+//        if (estoque.indexOf(codigo) != -1){
+//            int indice = estoque.indexOf(codigo);
+//            //estoque.set(estoque.indexOf(codigo), estoque.get(indice).quantidade - 1);
+//            estoque.remove(codigo);
+//        }
+//    }
 }
