@@ -6,6 +6,10 @@ import java.util.Calendar;
 import java.util.ArrayList;
 class Estoque {
     private ArrayList<Produto> produtos;
-    private Loja loja;
+//    private Loja loja;
+    //só pode ser criado um estoque para essa loja
+    public Estoque(){
+        
+    }
     
 }
