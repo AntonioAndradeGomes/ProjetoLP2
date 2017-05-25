@@ -1,10 +1,10 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Produto {
+public class Produto extends Estoque{
     private String nome;
     private double preco;
     private String validade2;
@@ -22,6 +22,7 @@ public class Produto {
         setVal(validade);
         this.codigo = codigo;
         this.unidadesAdiquiridas = unidadesAdiquiridas;
+        
     }
     public void setVal(String validade) throws ParseException{
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
