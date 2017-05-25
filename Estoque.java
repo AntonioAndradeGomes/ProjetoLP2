@@ -24,6 +24,9 @@ class Estoque extends Loja{
         }
         return false;
     }
+    public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
+        this.produtos.add(c);
+    }
     public void ExcluirProduto(String codigo){
         for (int i = 0; i<produtos.size(); i++){
             if (produtos.get(i).getCodigo().equals(codigo)){

@@ -12,16 +12,19 @@ public class Produto extends Estoque{
     private String codigo;
     private boolean verificavalidade;
     private long unidadesAdiquiridas;
+    Estoque dados;
 
 
     public Produto(String nome, double preco, String validade, 
-            String codigo, long unidadesAdiquiridas) throws ParseException {
+            String codigo, long unidadesAdiquiridas, Estoque b) throws ParseException {
         
         this.nome = nome;
         this.preco = preco;
         setVal(validade);
         this.codigo = codigo;
         this.unidadesAdiquiridas = unidadesAdiquiridas;
+        this.dados = b; // Referencia de qual estoque vai ser salvo
+        dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
         
     }
     public void setVal(String validade) throws ParseException{
