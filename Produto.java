@@ -7,12 +7,12 @@ import java.util.Calendar;
 public class Produto extends Estoque{
     private String nome;
     private double preco;
-    private String validade2;
+    private String validade2; // usada para receber a String validade para ser impresso.
     private Date validade;
     private String codigo;
     private boolean verificavalidade;
     private long unidadesAdiquiridas;
-    Estoque dados;
+    private Estoque dados;
 
 
     public Produto(String nome, double preco, String validade, 
@@ -28,6 +28,7 @@ public class Produto extends Estoque{
         
     }
     public void setVal(String validade) throws ParseException{
+        this.validade2 = validade;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date verifica = sdf.parse(validade);
         this.validade = verifica;
@@ -48,14 +49,16 @@ public class Produto extends Estoque{
     public void setPreco(double preco) {
         this.preco = preco;
     }
-
+    public String getValidade2(){
+        return this.validade2; // Retornar validade do produto.
+    }
     public Date getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
-        this.validade = validade;
-    }
+    //public void setValidade(Date validade) {
+    //    this.validade = validade;
+    //}
 
     public String getCodigo() {
         return codigo;
