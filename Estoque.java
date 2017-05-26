@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 import java.util.ArrayList;
 class Estoque extends Loja{
     private ArrayList<Produto> produtos;

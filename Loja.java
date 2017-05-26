@@ -1,5 +1,4 @@
-
-//package ProjetoLP2;
+package ProjetoLP2;
 //import java.util.Date;
 //import java.text.ParseException;
 //import java.text.SimpleDateFormat;
@@ -17,8 +16,48 @@ public class Loja {
         this.cadastrocliente = new ArrayList<Cliente>();
         this.estoque = new ArrayList<Estoque>();
     }
-    public void CadastroCliente (Cliente cliente){
-        this.getCadastrocliente().add(cliente);
+    public void AddCliente (Cliente c){
+        this.cadastrocliente.add(c);
+    }
+    public void ListarCliente (){
+        if(this.cadastrocliente.size() > 0){
+            System.out.println("cpf\t\t\tNome\t\tDivida");
+            System.out.println("==========================================================================================");
+            for (int i=0; i < cadastrocliente.size(); i++){
+                //Dá pra fazer tudo em uma linha, mas não fica elegante.
+                System.out.printf("%s", cadastrocliente.get(i).getCpf());
+                System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
+                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+            }
+            System.out.println("==========================================================================================");
+        }else{
+            System.out.println("Nao ha clientes cadastrados!!!");
+        }
+    }
+    public boolean BuscarClienteCpf(String cpf){
+        for (int i = 0; i < this.cadastrocliente.size(); i++){
+            if (this.cadastrocliente.get(i).getCpf().equals(cpf)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void BuscarClienteNome(String nome){
+        int ver = 0;
+        for (int i = 0; i < this.cadastrocliente.size(); i++){
+            if (this.cadastrocliente.get(i).getNome().equals(nome)){
+                ver += 1;
+                System.out.println("cpf\t\t\tNome\t\tDivida");
+                System.out.println("==========================================================================================");
+                System.out.printf("%s", cadastrocliente.get(i).getCpf());
+                System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
+                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+                System.out.println("==========================================================================================");
+            }
+        }
+        if (ver == 0){
+            System.out.println("Nao há clientes com tal nome");
+        }
     }
     
  
@@ -26,17 +65,7 @@ public class Loja {
         return montanteMensal;
     }
 
-    /**
-     * @return the estoque
-     */
-    public ArrayList <Estoque> getEstoque() {
-        return estoque;
-    }
-
-    /**
-     * @return the cadastrocliente
-     */
-    public ArrayList <Cliente> getCadastrocliente() {
-        return cadastrocliente;
+    public void setMontanteMensal(double montanteMensal) {
+        this.montanteMensal = montanteMensal;
     }
 }

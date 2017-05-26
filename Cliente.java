@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,14 @@ public class Cliente{
     private String cpf;
     private double divida = 0;
     private double troco;
+    private Loja dados;
     
-    public Cliente(String nome, String cpf){
+    
+    public Cliente(String nome, String cpf, Loja a){
         this.nome = nome;
         this.cpf = cpf;
+        this.dados = a;
+        dados.AddCliente(this);
     }
 
     public String getNome() {
