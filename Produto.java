@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,9 +22,10 @@ public class Produto extends Estoque{
         this.preco = preco;
         setVal(validade);
         this.codigo = codigo;
-        this.unidadesAdiquiridas = unidadesAdiquiridas;
+        setUnidadesAdiquiridas(unidadesAdiquiridas);
         this.dados = b; // Referencia de qual estoque vai ser salvo
-        dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
+        if (Validade() == true && this.unidadesAdiquiridas > 0) //Comando para adicionar somente produtos no prazo de validade.
+            dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
         
     }
     public void setVal(String validade) throws ParseException{
@@ -47,7 +48,8 @@ public class Produto extends Estoque{
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        if (preco > 0)
+            this.preco = preco;
     }
     public String getValidade2(){
         return this.validade2; // Retornar validade do produto.
@@ -81,7 +83,10 @@ public class Produto extends Estoque{
     }
 
     public void setUnidadesAdiquiridas(long unidadesAdiquiridas) {
-        this.unidadesAdiquiridas = unidadesAdiquiridas;
+        if (unidadesAdiquiridas > 0)
+            this.unidadesAdiquiridas = unidadesAdiquiridas;
+        else
+            this.unidadesAdiquiridas = 0;
     }
     public boolean VerificaDisponibilidade(){
         if(this.getUnidadesAdiquiridas() > 0){
