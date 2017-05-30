@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Produto extends Estoque{
+public class Produto{
     private String nome;
     private double preco;
     private String validade2; // usada para receber a String validade para ser impresso.

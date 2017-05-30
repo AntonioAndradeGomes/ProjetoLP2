@@ -1,6 +1,6 @@
 //package ProjetoLP2;
 import java.util.ArrayList;
-class Estoque extends Loja{
+class Estoque{
     private ArrayList<Produto> produtos;
 //    private Loja loja;
     //só pode ser criado um estoque para essa loja
@@ -8,6 +8,11 @@ class Estoque extends Loja{
         produtos = new ArrayList<>();
         
     }
+
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
+    }
+    
     public boolean BuscarProdutoCodigo(String codigo){
         for (int i = 0; i<produtos.size(); i++){
             if (produtos.get(i).getCodigo().equals(codigo)){
