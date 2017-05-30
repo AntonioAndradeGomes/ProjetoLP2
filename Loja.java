@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 //import java.util.Date;
 //import java.text.ParseException;
 //import java.text.SimpleDateFormat;
@@ -60,7 +60,9 @@ public class Loja {
         }
     }
     
- 
+    public void ListarVendas(){ //listar todas as vendas realizadas
+        
+    }
     public double getMontanteMensal() {
         return montanteMensal;
     }

@@ -1,5 +1,5 @@
 
-//package ProjetoLP2;
+package ProjetoLP2;
 
 import java.util.Scanner;
 
@@ -53,8 +53,17 @@ public class Fachada {
             byte var2 = t.nextByte();
             switch (var2){
                 case 1:
-                    
-                    
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Adicione o codiogo do produto!");
+                    String code = t.nextLine();
+                    Estoque.ExcluirProduto(code);
+                    break;
+                case 4:
+                    Estoque.ListarProdutos();
+                    break;
             }
             
         }    
@@ -76,6 +85,7 @@ public class Fachada {
             byte var2 = t.nextByte();
             switch (var2){
                 case 1:
+                    
                     
                     
             }
