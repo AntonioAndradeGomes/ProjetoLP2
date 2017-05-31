@@ -4,6 +4,7 @@ package ProjetoLP2;
 import java.util.Scanner;
 
 public class Fachada {
+    Loja loja = new Loja();
     public void metodo1(){
         Scanner t = new Scanner (System.in);
         boolean flag = true;
@@ -59,10 +60,10 @@ public class Fachada {
                 case 3:
                     System.out.println("Adicione o codiogo do produto!");
                     String code = t.nextLine();
-                    Estoque.ExcluirProduto(code);
+                    //Estoque.ExcluirProduto(code);
                     break;
                 case 4:
-                    Estoque.ListarProdutos();
+                   // Estoque.ListarProdutos();
                     break;
             }
             

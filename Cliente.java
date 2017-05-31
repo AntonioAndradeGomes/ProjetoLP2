@@ -8,7 +8,7 @@ public class Cliente{
     private double divida = 0;
     private double troco;
     private Loja dados;
-    private AttayList <Produtos> compras;
+    private ArrayList <Produto> compras;
     
     
     public Cliente(String nome, String cpf, Loja a){
@@ -53,6 +53,8 @@ public class Cliente{
     public void ListarVendas(){//Listar todas as compras feitas por esse comprador cadastrado
         
     }
+
+//    }
 //    public void Comprar(int codigo){
 //        if (estoque.indexOf(codigo) != -1){
 //            int indice = estoque.indexOf(codigo);

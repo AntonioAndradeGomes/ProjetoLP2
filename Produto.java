@@ -28,6 +28,8 @@ public class Produto{
             dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
         
     }
+
+
     public void setVal(String validade) throws ParseException{
         this.validade2 = validade;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

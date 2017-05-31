@@ -8,13 +8,22 @@ import java.util.ArrayList;
 public class Loja {
 
     private double montanteMensal;
-    private ArrayList <Estoque> estoque;
+    private Estoque estoque;
     private ArrayList <Cliente> cadastrocliente;
 
     public Loja (){
         this.montanteMensal = 0.0;
         this.cadastrocliente = new ArrayList<Cliente>();
-        this.estoque = new ArrayList<Estoque>();
+        estoque = new Estoque();
+
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
     }
     public void AddCliente (Cliente c){
         this.cadastrocliente.add(c);
