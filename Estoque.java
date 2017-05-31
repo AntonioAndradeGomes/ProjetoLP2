@@ -2,11 +2,15 @@ package ProjetoLP2;
 import java.util.ArrayList;
 class Estoque{
     private ArrayList<Produto> produtos;
-//    private Loja loja;
+
     //só pode ser criado um estoque para essa loja
     public Estoque(){
+
         produtos = new ArrayList<>();
-        
+    }
+
+    public void setProdutos(ArrayList<Produto> produtos) {
+        this.produtos = produtos;
     }
     
     public ArrayList<Produto> getProdutos() {

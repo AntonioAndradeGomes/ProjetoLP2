@@ -12,14 +12,15 @@ public class Loja {
     private ArrayList <Cliente> cadastrocliente;
 
     public Loja (){
+
         this.montanteMensal = 0.0;
         this.cadastrocliente = new ArrayList<Cliente>();
-        estoque = new Estoque();
+        this.estoque = new Estoque();
 
     }
 
     public Estoque getEstoque() {
-        return estoque;
+        return estoque; 
     }
 
     public void setEstoque(Estoque estoque) {

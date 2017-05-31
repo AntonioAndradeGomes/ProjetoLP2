@@ -23,9 +23,13 @@ public class Produto{
         setVal(validade);
         this.codigo = codigo;
         setUnidadesAdiquiridas(unidadesAdiquiridas);
+        //tem que verificar isso em tempo de execução
         this.dados = b; // Referencia de qual estoque vai ser salvo
-        if (Validade() == true && this.unidadesAdiquiridas > 0) //Comando para adicionar somente produtos no prazo de validade.
+        if (Validade() == true && this.unidadesAdiquiridas > 0){ //Comando para adicionar somente produtos no prazo de validade.
             dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
+        }else{
+            System.out.println("Produto vencido!");
+        }
         
     }
 

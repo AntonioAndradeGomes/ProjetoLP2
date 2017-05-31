@@ -9,9 +9,12 @@ public class Main {
 //        fachada.metodo1();
 //        
           Loja l = new Loja();
-          
-          Produto d = new Produto("d", 123, "10/10/2015", "1234", 5);
-//        Produto c = new Produto("w", 123, "10/10/2018", "1233", 0, b);
+//          Estoque b = new Estoque();
+          Produto d = new Produto("d", 123, "10/10/2015", "1234", 5,l.getEstoque());
+//          Produto c = new Produto("w", 123, "10/10/2018", "1233", 0, b);
+//          
+          l.getEstoque();
+          l.getEstoque().ListarProdutos();
 //        
 
     }
