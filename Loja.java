@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 //import java.util.Date;
 //import java.text.ParseException;
 //import java.text.SimpleDateFormat;
@@ -10,13 +10,18 @@ public class Loja {
     private double montanteMensal;
     private Estoque estoque;
     private ArrayList <Cliente> cadastrocliente;
+    ArrayList <Produto> vendas;
 
     public Loja (){
 
         this.montanteMensal = 0.0;
         this.cadastrocliente = new ArrayList<Cliente>();
+        this.vendas = new ArrayList<>();
         this.estoque = new Estoque();
 
+    }
+    public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
+        this.estoque.addProd(c);
     }
 
     public Estoque getEstoque() {

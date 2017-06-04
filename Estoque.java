@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.ArrayList;
 class Estoque{
     private ArrayList<Produto> produtos;
@@ -7,6 +7,10 @@ class Estoque{
     public Estoque(){
 
         produtos = new ArrayList<>();
+    }
+    
+    public void addProd(Produto c){
+        this.produtos.add(c);
     }
 
     public void setProdutos(ArrayList<Produto> produtos) {
@@ -33,8 +37,8 @@ class Estoque{
         }
         return false;
     }
-    public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
-        this.produtos.add(c);
+   // public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
+    //    this.produtos.add(c);
         //if (produtos.size() == 0)
          //   this.produtos.add(c);
         //else if (produtos.size() > 0){
@@ -46,7 +50,7 @@ class Estoque{
         //}else{
          //   this.produtos.add(c);
         //}    
-    }
+    //}
     public void ExcluirProduto(String codigo){
         for (int i = 0; i<produtos.size(); i++){
             if (produtos.get(i).getCodigo().equals(codigo)){

@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,11 +12,19 @@ public class Produto{
     private String codigo;
     private boolean verificavalidade;
     private long unidadesAdiquiridas;
-    private Estoque dados;
-
+    private Loja dados;
 
     public Produto(String nome, double preco, String validade, 
-            String codigo, long unidadesAdiquiridas, Estoque b) throws ParseException {
+            String codigo, long unidadesAdiquiridas) throws ParseException {
+        
+        this.nome = nome;
+        this.preco = preco;
+        setVal(validade);
+        this.codigo = codigo;
+        setUnidadesAdiquiridas(unidadesAdiquiridas);
+    }
+    public Produto(String nome, double preco, String validade, 
+            String codigo, long unidadesAdiquiridas, Loja b) throws ParseException {
         
         this.nome = nome;
         this.preco = preco;
