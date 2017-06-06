@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 //import java.util.Date;
 //import java.text.ParseException;
 //import java.text.SimpleDateFormat;
@@ -40,8 +40,7 @@ public class Loja {
             System.out.println("==========================================================================================");
             for (int i=0; i < cadastrocliente.size(); i++){
                 //Dá pra fazer tudo em uma linha, mas não fica elegante.
-                System.out.printf("%s", cadastrocliente.get(i).getCpf());
-                System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
+                System.out.printf("%s", cadastrocliente.get(i).getCpf()); System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome()); 
                 System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
             }
             System.out.println("==========================================================================================");
@@ -75,7 +74,7 @@ public class Loja {
         }
     }
     
-    public void ListarVendas(){ //listar todas as vendas realizadas
+    public void ListarVendas(){
         
     }
     public double getMontanteMensal() {

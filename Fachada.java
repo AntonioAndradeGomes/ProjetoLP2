@@ -1,5 +1,4 @@
-
-//package ProjetoLP2;
+package ProjetoLP2;
 
 import java.util.Scanner;
 
@@ -7,8 +6,7 @@ public class Fachada {
     Loja loja = new Loja();
     public void metodo1(){
         Scanner t = new Scanner (System.in);
-        boolean flag = true;
-        while (flag){
+        while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Menu de contole de estoque\n"
                     + "2: Menu de contole de vendas\n"
@@ -16,33 +14,28 @@ public class Fachada {
                     + "0: Sair\n");
 
 
-            byte var1 = t.nextByte();
-            switch (var1){
-                case 1:
-                    Menu1();
-                    flag = false;
-                    break;
-                case 2:
-                   Menu2();
-                   flag = false;
-                   break;
-                case 3:
-                    Menu3();
-                    flag = false;
-                    break;
-                case 0:
-                    flag = false;
-                    break;
-                default:
-                    System.out.println("Redigite a opcao!");
+            String var1 = t.next();
+            if (var1.equals("1") == 0){
+                Menu1();
+                break;
+            }else if (var1.equals("2") == 0){
+                Menu2();
+                break;
+            }else if(var1.equals("3") == 0){
+                Menu3();
+                break;
+            }else if (var1.equals("0") == 0)
+                break;
+            }else{
+                System.out.println("Redigite a opção!")
             }
         }
     }
 
     private static void Menu1() {
         Scanner t = new Scanner (System.in);
-        boolean flag = true;
-        while (flag){
+        // boolean flag = true;
+        while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Adicionar Produto\n"
                     + "2: Buscar Produto\n"
@@ -51,20 +44,19 @@ public class Fachada {
                     + "0: Sair\n");
 
 
-            byte var2 = t.nextByte();
-            switch (var2){
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    System.out.println("Adicione o codiogo do produto!");
-                    String code = t.nextLine();
-                    //Estoque.ExcluirProduto(code);
-                    break;
-                case 4:
-                   // Estoque.ListarProdutos();
-                    break;
+            String var2 = t.next();
+            if (var2.equals("1") == 0){
+                break;
+            }else if (var2.equals("2") == 0){
+                break;
+            }else if(var2.equals("3") == 0){
+                break;
+            }else if (var2.equals("0") == 0)
+                break;
+            }else if (var2.equals("4") == 0){
+                break;
+            }else{
+                System.out.println("Redigite a opção!")
             }
             
         }    
@@ -73,22 +65,26 @@ public class Fachada {
     private static void Menu2() {
         //Contole de vendas: Classe vender e cliente 
         Scanner t = new Scanner (System.in);
-        boolean flag = true;
-        while (flag){
+        while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Adicionar Produto\n"
                     + "2: Buscar Produto\n"
                     + "3: Excluir Produto\n"
                     + "4: Listar Produtos\n"
                     + "0: Sair\n");
-
-
-            byte var2 = t.nextByte();
-            switch (var2){
-                case 1:
-                    
-                    
-                    
+            String var3 = t.next();
+            if (var3.equals("1") == 0){
+                break;
+            }else if (var3.equals("2") == 0){
+                break;
+            }else if(var3.equals("3") == 0){
+                break;
+            }else if (var3.equals("0") == 0)
+                break;
+            }else if (var3.equals("4") == 0){
+                break;
+            }else{
+                System.out.println("Redigite a opção!")
             }
             
         }
@@ -97,8 +93,8 @@ public class Fachada {
     private static void Menu3(){
         //menu de clientes
         Scanner t = new Scanner (System.in);
-        boolean flag = true;
-        while (flag){
+
+        while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Adicionar Cliente\n"
                     + "2: Listar Clientes\n"
@@ -108,11 +104,19 @@ public class Fachada {
                     + "0: Sair\n");
 
 
-            byte var2 = t.nextByte();
-            switch (var2){
-                case 1:
-                    
-                    
+            String var4 = t.next();
+            if (var3.equals("1") == 0){
+                break;
+            }else if (var3.equals("2") == 0){
+                break;
+            }else if(var3.equals("3") == 0){
+                break;
+            }else if (var3.equals("0") == 0)
+                break;
+            }else if (var3.equals("4") == 0){
+                break;
+            }else{
+                System.out.println("Redigite a opção!")
             }
             
         }    
