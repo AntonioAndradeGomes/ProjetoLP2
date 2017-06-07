@@ -1,6 +1,11 @@
 package ProjetoLP2;
-
 import java.util.Scanner;
+
+import java.text.ParseException;
+
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Fachada {
     Loja loja = new Loja();
@@ -37,7 +42,7 @@ public class Fachada {
 
 
 
-    private void Menu1() {
+    private void Menu1(){
         Scanner t = new Scanner (System.in);
         while (true){
             System.out.println("Escolha a opcao!\n"
@@ -50,7 +55,14 @@ public class Fachada {
 
             String var2 = t.next();
             if (var2.equals("1")){
-                break;
+                System.out.println("Digite nome do produto, preço, data de validade, codigo e suas unidades adiquidridas");
+                String nome = t.nextLine(); double preco = t.nextDouble(); 
+                String validade = t.nextLine(); String code = t.nextLine(); long unidade = t.nextLong();
+//                try {
+//                    Produto p = new Produto(nome, preco, validade, code, unidade);
+//                } catch (ParseException ex) {
+//                    Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+//                }
             }else if (var2.equals("2")){
                 break;
             }else if(var2.equals("3")){
@@ -102,7 +114,7 @@ public class Fachada {
                     + "2: Listar Clientes\n"
                     + "3: Excluir Clientes\n"
                     + "4: Buscar Clientes/n"
-                    + "5: Receber Valores do Cliente"
+                    + "5: Receber Valores do Cliente\n"
                     + "0: Sair\n");
 
 

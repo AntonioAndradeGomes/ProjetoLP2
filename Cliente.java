@@ -50,7 +50,7 @@ public class Cliente{
             }
         }
     }
-    public void ListarVendas(){//Listar todas as compras feitas por esse comprador cadastrado
+    public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
         
     }
 
