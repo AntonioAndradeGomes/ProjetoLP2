@@ -1,11 +1,11 @@
 package ProjetoLP2;
 import java.util.Scanner;
 
-import java.text.ParseException;
-
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.text.ParseException;
+//
+//
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 public class Fachada {
     Loja loja = new Loja();
@@ -64,10 +64,16 @@ public class Fachada {
 //                    Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
 //                }
             }else if (var2.equals("2")){
+                System.out.println("1: Buscar pelo codigo\n"
+                        + "2: Buscar pelo nome");
                 break;
             }else if(var2.equals("3")){
+                System.out.println("Digite o codigo do produto que deseja-se excluir do estoque");
+                String code = t.nextLine();
+                loja.getEstoque().ExcluirProduto(code);
                 break;
             }else if (var2.equals("4")){
+                loja.getEstoque().ListarProdutos();
                 break;
             }else{
                 metodo1();
@@ -123,6 +129,7 @@ public class Fachada {
             if (var4.equals("1")){
                 break;
             }else if (var4.equals("2")){
+                loja.ListarCliente();
                 break;
             }else if(var4.equals("3")){
                 break;
