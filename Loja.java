@@ -11,6 +11,7 @@ public class Loja {
     private Estoque estoque;
     private ArrayList <Cliente> cadastrocliente;
     private ArrayList <Produto> vendas;
+    private Vender venda;
 
     public Loja (){
 
@@ -18,7 +19,16 @@ public class Loja {
         this.cadastrocliente = new ArrayList<Cliente>();
         this.vendas = new ArrayList<>();
         this.estoque = new Estoque();
+        this.venda = new Vender();
 
+    }
+
+    public Vender getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Vender venda) {
+        this.venda = venda;
     }
     public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
         this.estoque.addProd(c);
@@ -75,7 +85,19 @@ public class Loja {
     }
     
     public void ListarVendas(){
-        
+        System.out.println("Codigo\t\t\tNome\t\tQuantidade\t\tPreço\t\tValidade");
+        System.out.println("==========================================================================================");
+        for (int i=0; i < vendas.size(); i++){
+            //Dá pra fazer tudo em uma linha, mas não fica elegante.
+            System.out.printf("%s", vendas.get(i).getCodigo());
+            System.out.printf("\t\t\t%s", vendas.get(i).getNome());
+            System.out.printf("\t\t%d", vendas.get(i).getUnidadesAdiquiridas());
+            System.out.printf("\t\t\t%.2f", vendas.get(i).getPreco());
+            System.out.printf("\t\t%s\n", vendas.get(i).getValidade2());
+            
+            
+        }
+        System.out.println("==========================================================================================");
     }
     public double getMontanteMensal() {
         return montanteMensal;

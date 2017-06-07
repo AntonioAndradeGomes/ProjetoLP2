@@ -39,7 +39,11 @@ public class Cliente{
     }
 
     public void setDivida(double divida) {
+        if (divida > 0){
         this.divida = divida;
+        }else{
+            System.out.println("Valor incorretos.");
+        }
     }
     public void PagarDivida(double valor){
         if (valor > 0){
@@ -48,11 +52,13 @@ public class Cliente{
                 this.troco = this.divida;
                 this.divida = 0;
             }
+        }else{
+            System.out.println("Valor incorreto.");
         }
     }
-    public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
+    //public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
         
-    }
+    //}
 
 //    }
 //    public void Comprar(int codigo){

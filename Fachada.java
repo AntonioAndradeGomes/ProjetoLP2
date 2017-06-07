@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.Scanner;
 
 //import java.text.ParseException;
