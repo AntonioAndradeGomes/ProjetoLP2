@@ -18,7 +18,7 @@ public class Main {
 //        l.getEstoque().ListarProdutos();
 //
 //        a.vender("1234", 2, l);
-//        System.out.println(l.vendas.get(0).getUnidadesAdiquiridas());
+//        System.out.println(l.getVendas().get(0).getUnidadesAdiquiridas());
 //        
 
     }

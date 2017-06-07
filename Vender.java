@@ -1,49 +1,50 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.text.ParseException;
-import java.util.ArrayList;
 public class Vender{
     Cliente cliente;
-    Produto produto;
-    //ArrayList<Produto> vendas;
     
     public void vender(String codigo, long quantidade, Loja b) throws ParseException{
-        //b.getEstoque().getProdutos().size();
-        boolean verifica = false; //Verifica os limites do estoque
-        boolean verifica2 = false; //Se o código do produto está certo.
+        int verifica = 0; // Variavel criada para verificar possibilidades.
         for (int i = 0; i < b.getEstoque().getProdutos().size(); i++){
             if (b.getEstoque().getProdutos().get(i).getCodigo().equals(codigo)){
-                verifica2 = true;
-                long quantidade2 = b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade;
-                //if (b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade > 0){ //Se as unidades menos a qunatidade disponiveis forem maior que 0
-                
-                if (quantidade2 > 0){
-                    //System.out.println(quantidade2);
-                    final long qtd = b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade; // No estoque
-                    System.out.println(qtd);
-                    b.getEstoque().getProdutos().get(i).setUnidadesAdiquiridas(2); // unidade vendidas
-                    this.produto = new Produto(b.getEstoque().getProdutos().get(i).getNome(), 123, "10/10/2018", "1234", quantidade); // Testes no sistema de vendas, finalmente consegui
-                    System.out.println(this.produto);
-                    b.vendas.add(this.produto); // adiciona as unidades vendidas.
-                    b.getEstoque().getProdutos().get(i).setUnidadesAdiquiridas(qtd);
-                    System.out.println(b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas());
-                    verifica = true;
-                }else if (b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade > 0){ // Se as unidades menos a quantidade forem igual a zero, ou seja, acabou o produto.
-                    final long qtd = b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade; // No estoque
-                    b.getEstoque().getProdutos().get(i).setUnidadesAdiquiridas(quantidade); // unidade vendidas
-                    //vendas.add(b.getEstoque().getProdutos().get(i)); // adiciona as unidades vendidas.
-                    b.getEstoque().getProdutos().remove(i); //Remove o produto.
-                    verifica = true;
+                long qtd = b.getEstoque().getProdutos().get(i).getUnidadesAdiquiridas() - quantidade; // Quantidade do estoque menos as unidades compradas
+     
+                if (qtd > 0){
+                    b.getEstoque().getProdutos().get(i).setUnidadesAdiquiridas(qtd); // Atualizando unidades vendidas.
+                    //===========Construindo Objeto para compra===========
+                    String nome = b.getEstoque().getProdutos().get(i).getNome();
+                    double preco = b.getEstoque().getProdutos().get(i).getPreco();
+                    String validade = b.getEstoque().getProdutos().get(i).getValidade2();
+                    Produto produto = new Produto(nome, preco, validade, codigo, quantidade); // Testes no sistema de vendas, finalmente consegui
+                    if (produto.isVerificavalidade() == true){
+                        b.getVendas().add(produto); // adiciona as unidades vendidas.
+                        verifica = 1;
+                    }else{
+                        verifica = 2;
+                    }
+                }else if (qtd == 0){ // Se as unidades menos a quantidade forem igual a zero, ou seja, acabou o produto.
+                    //===========Construindo Objeto para compra===========
+                    String nome = b.getEstoque().getProdutos().get(i).getNome();
+                    double preco = b.getEstoque().getProdutos().get(i).getPreco();
+                    String validade = b.getEstoque().getProdutos().get(i).getValidade2();
+                    Produto produto = new Produto(nome, preco, validade, codigo, quantidade); // Testes no sistema de vendas, finalmente consegui
+                    if (produto.isVerificavalidade() == true){
+                        b.getVendas().add(produto); // adiciona as unidades vendidas.
+                        b.getEstoque().getProdutos().remove(i); //Remove o produto por a quantidade ser zero.
+                        verifica = 1;
+                    }else{
+                        verifica = 2;
+                    }
                 }
-                //b.getProdutos().get(i).setUnidadesAdiquiridas(quantidade);
             }
         }
-        //System.out.println(b.getEstoque().getProdutos().get(0).getUnidadesAdiquiridas() - 1);
-        if (verifica2 == false){
-            System.out.println("Código errado");
-        }else if(verifica2 == true && verifica == true){
-            System.out.println("Compra realizada com Sucesso");
-        }else if(verifica2 == true && verifica == false){
-            System.out.println("Não temos essa quantidade em estoque");
+        //Central de Verificações.
+        if (verifica == 0){
+            System.out.println("Código errado.");
+        }else if(verifica == 1){
+            System.out.println("Compra realizada com Sucesso.");
+        }else if(verifica == 2){
+            System.out.println("Não foi possivel realizar a compra, produto está vencido.");
         }
     }
 }

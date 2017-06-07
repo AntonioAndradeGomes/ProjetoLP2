@@ -1,4 +1,4 @@
-package ProjetoLP2;
+//package ProjetoLP2;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,13 +15,19 @@ public class Produto{
     private Loja dados;
 
     public Produto(String nome, double preco, String validade, 
-            String codigo, long unidadesAdiquiridas) throws ParseException {
+            String codigo, long unidadesAdiquiridas) throws ParseException { // Criada um outro construtor para ficar reponsável por vendas.
         
         this.nome = nome;
         this.preco = preco;
         setVal(validade);
         this.codigo = codigo;
         setUnidadesAdiquiridas(unidadesAdiquiridas);
+        
+        if (Validade() == true && this.unidadesAdiquiridas > 0){ //Comando para adicionar somente produtos no prazo de validade.
+            setVerificavalidade(true);
+        }else{
+            setVerificavalidade(false);
+        }
     }
     public Produto(String nome, double preco, String validade, 
             String codigo, long unidadesAdiquiridas, Loja b) throws ParseException {
@@ -36,7 +42,7 @@ public class Produto{
         if (Validade() == true && this.unidadesAdiquiridas > 0){ //Comando para adicionar somente produtos no prazo de validade.
             dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
         }else{
-            System.out.println("Produto vencido!");
+            System.out.println("Produto vencido ou quantidade negativa.");
         }
         
     }
