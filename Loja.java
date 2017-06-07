@@ -6,11 +6,11 @@ package ProjetoLP2;
 import java.util.ArrayList;
 
 public class Loja {
-
+    
     private double montanteMensal;
     private Estoque estoque;
     private ArrayList <Cliente> cadastrocliente;
-    ArrayList <Produto> vendas;
+    private ArrayList <Produto> vendas;
 
     public Loja (){
 
@@ -79,6 +79,22 @@ public class Loja {
     }
     public double getMontanteMensal() {
         return montanteMensal;
+    }
+
+    public ArrayList<Cliente> getCadastrocliente() {
+        return cadastrocliente;
+    }
+
+    public void setCadastrocliente(ArrayList<Cliente> cadastrocliente) {
+        this.cadastrocliente = cadastrocliente;
+    }
+
+    public ArrayList<Produto> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(ArrayList<Produto> vendas) {
+        this.vendas = vendas;
     }
 
     public void setMontanteMensal(double montanteMensal) {

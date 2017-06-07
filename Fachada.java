@@ -15,26 +15,30 @@ public class Fachada {
 
 
             String var1 = t.next();
-            if (var1.equals("1") == 0){
+            if (var1.equals("1")){
                 Menu1();
                 break;
-            }else if (var1.equals("2") == 0){
+            }else if(var1.equals("2")){
                 Menu2();
                 break;
-            }else if(var1.equals("3") == 0){
+            }else if (var1.equals("2")){
+                Menu2();
+                break;
+            }else if(var1.equals("3")){
                 Menu3();
                 break;
-            }else if (var1.equals("0") == 0)
+            }else if (var1.equals("0")){
                 break;
             }else{
-                System.out.println("Redigite a opção!")
+               System.out.println("Redigite a opção!");
+            }
             }
         }
-    }
 
-    private static void Menu1() {
+
+
+    private void Menu1() {
         Scanner t = new Scanner (System.in);
-        // boolean flag = true;
         while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Adicionar Produto\n"
@@ -45,24 +49,23 @@ public class Fachada {
 
 
             String var2 = t.next();
-            if (var2.equals("1") == 0){
+            if (var2.equals("1")){
                 break;
-            }else if (var2.equals("2") == 0){
+            }else if (var2.equals("2")){
                 break;
-            }else if(var2.equals("3") == 0){
+            }else if(var2.equals("3")){
                 break;
-            }else if (var2.equals("0") == 0)
-                break;
-            }else if (var2.equals("4") == 0){
+            }else if (var2.equals("4")){
                 break;
             }else{
-                System.out.println("Redigite a opção!")
-            }
-            
-        }    
+                metodo1();
+                break;
+            }    
+        }
     }
+    
 
-    private static void Menu2() {
+    private void Menu2() {
         //Contole de vendas: Classe vender e cliente 
         Scanner t = new Scanner (System.in);
         while (true){
@@ -73,24 +76,23 @@ public class Fachada {
                     + "4: Listar Produtos\n"
                     + "0: Sair\n");
             String var3 = t.next();
-            if (var3.equals("1") == 0){
+            if (var3.equals("1")){
                 break;
-            }else if (var3.equals("2") == 0){
+            }else if (var3.equals("2")){
                 break;
-            }else if(var3.equals("3") == 0){
+            }else if(var3.equals("3")){
                 break;
-            }else if (var3.equals("0") == 0)
+            }else if (var3.equals("0")){
+                metodo1();
                 break;
-            }else if (var3.equals("4") == 0){
+        
+            }else if (var3.equals("4")){
                 break;
-            }else{
-                System.out.println("Redigite a opção!")
             }
-            
         }
     }
 
-    private static void Menu3(){
+    private void Menu3(){
         //menu de clientes
         Scanner t = new Scanner (System.in);
 
@@ -105,18 +107,22 @@ public class Fachada {
 
 
             String var4 = t.next();
-            if (var3.equals("1") == 0){
+
+            if (var4.equals("1")){
                 break;
-            }else if (var3.equals("2") == 0){
+            }else if (var4.equals("2")){
                 break;
-            }else if(var3.equals("3") == 0){
+            }else if(var4.equals("3")){
                 break;
-            }else if (var3.equals("0") == 0)
+            }else if (var4.equals("0")){
+                metodo1();
                 break;
-            }else if (var3.equals("4") == 0){
+            }else if (var4.equals("4")){
+                break;
+            }else if (var4.equals("5")){
                 break;
             }else{
-                System.out.println("Redigite a opção!")
+               System.out.println("Redigite a opção!");
             }
             
         }    
@@ -124,3 +130,4 @@ public class Fachada {
     }
     
 }
+ 
