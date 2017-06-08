@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 
 import java.text.ParseException;
 
@@ -17,7 +17,7 @@ public class Main {
         l.getEstoque();
         l.getEstoque().ListarProdutos();
         
-        l.getVenda().vender("1234", 2, l);
+        l.getVenda().vender("1234", 3, l);
         
         l.ListarVendas();
         

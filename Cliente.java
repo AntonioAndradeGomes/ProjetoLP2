@@ -1,4 +1,4 @@
-//package ProjetoLP2;
+package ProjetoLP2;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Cliente{
     private double divida = 0;
     private double troco;
     private Loja dados;
-    private ArrayList <Produto> compras;
+   // private ArrayList <Produto> compras;
     
     
     public Cliente(String nome, String cpf, Loja a){
