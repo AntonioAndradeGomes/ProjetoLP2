@@ -99,6 +99,19 @@ public class Loja {
         }
         System.out.println("==========================================================================================");
     }
+    public void Excluircliente(String cpf){
+        boolean verifica = false;
+        for (int i = 0; i < this.getCadastrocliente().size(); i++){
+            if (this.getCadastrocliente().get(i).getCpf().equals(cpf)){
+                this.getCadastrocliente().remove(i);
+                System.out.println("Cliente excluido.");
+                verifica = true;
+            }
+        }
+        if (verifica == false){
+            System.out.println("Não foi possível excluir o cliente.");
+        }
+    }
     public double getMontanteMensal() {
         return montanteMensal;
     }
