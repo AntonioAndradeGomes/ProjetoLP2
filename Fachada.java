@@ -9,13 +9,15 @@ import java.util.Scanner;
 
 public class Fachada {
     Loja loja = new Loja();
+    
     public void metodo1(){
         Scanner t = new Scanner (System.in);
         while (true){
             System.out.println("Escolha a opcao!\n"
                     + "1: Menu de contole de estoque\n"
                     + "2: Menu de contole de vendas\n"
-                    + "3: Menu de clientes\n" 
+                    + "3: Menu de clientes\n"
+                    + "4: Valores adiquiridos pela loja"
                     + "0: Sair\n");
 
 
@@ -31,6 +33,9 @@ public class Fachada {
                 break;
             }else if(var1.equals("3")){
                 Menu3();
+                break;
+            }else if (var1.equals("4")){
+                System.out.println(loja.getMontanteMensal());
                 break;
             }else if (var1.equals("0")){
                 break;
@@ -64,8 +69,7 @@ public class Fachada {
 //                    Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
 //                }
             }else if (var2.equals("2")){
-                System.out.println("1: Buscar pelo codigo\n"
-                        + "2: Buscar pelo nome");
+                buscarProduto();
                 break;
             }else if(var2.equals("3")){
                 System.out.println("Digite o codigo do produto que deseja-se excluir do estoque");
@@ -118,7 +122,7 @@ public class Fachada {
             System.out.println("Escolha a opcao!\n"
                     + "1: Adicionar Cliente\n"
                     + "2: Listar Clientes\n"
-                    + "3: Excluir Clientes\n"
+                    + "3: Excluir Clientes\n" //falta fazer o codigo que exclui o cliente
                     + "4: Buscar Clientes/n"
                     + "5: Receber Valores do Cliente\n"
                     + "0: Sair\n");
@@ -137,8 +141,18 @@ public class Fachada {
                 metodo1();
                 break;
             }else if (var4.equals("4")){
+                buscarCliente();
                 break;
             }else if (var4.equals("5")){
+//                System.out.println("Digite o valor!");
+//                try{
+//                    double valor = t.nextDouble();
+//                    
+//                    break;
+//                }catch(Throwable e){
+//                    System.out.println("Valor Digitado Errado!");
+//                    Menu3();
+//                }
                 break;
             }else{
                System.out.println("Redigite a opção!");
@@ -146,6 +160,34 @@ public class Fachada {
             
         }    
             
+    }
+
+    private void buscarProduto() {
+        Scanner t = new Scanner (System.in);
+        System.out.println("Digite a opção desejada!\n"
+                + "1: Buscar pelo nome\n"
+                + "2: Buscar pelo codigo do produto\n"
+                + "0: Sair");
+        String var = t.next();
+        if (var.equals("1")){
+            System.out.println("Digite o nome do produto!");
+            String var2 = t.nextLine();
+            loja.getEstoque().BuscarProdutoNome(var2);
+            Menu1();
+        }else if (var.equals("2")){
+            System.out.println("Digite o codigo do produto!");
+            String var2 = t.nextLine();
+            loja.getEstoque().BuscarProdutoCodigo(var2);
+            Menu1();            
+        }else if(var.equals("0")){
+            Menu1();
+        }else{
+            System.out.println("Opção invalida!");
+            buscarProduto();
+        }
+    }
+    private void buscarCliente(){
+        
     }
     
 }
