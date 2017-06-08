@@ -15,21 +15,6 @@ public class Produto{
     private Loja dados;
 
     public Produto(String nome, double preco, String validade, 
-            String codigo, long unidadesAdiquiridas) throws ParseException { // Criada um outro construtor para ficar reponsável por vendas.
-        
-        this.nome = nome;
-        this.preco = preco;
-        setVal(validade);
-        this.codigo = codigo;
-        setUnidadesAdiquiridas(unidadesAdiquiridas);
-        
-        if (Validade() == true && this.unidadesAdiquiridas > 0){ //Comando para adicionar somente produtos no prazo de validade.
-            setVerificavalidade(true);
-        }else{
-            setVerificavalidade(false);
-        }
-    }
-    public Produto(String nome, double preco, String validade, 
             String codigo, long unidadesAdiquiridas, Loja b) throws ParseException {
         
         this.nome = nome;

@@ -15,12 +15,11 @@ public class Main {
         Produto c = new Produto("w", 123, "10/10/2018", "1233", 1, l);
           
         l.getEstoque();
-        l.getEstoque().ListarProdutos();
         
-        l.getVenda().vender("1234", 3, l);
+        l.getVenda().vender("1234", 8, l);
         
         l.ListarVendas();
-        
+        l.getEstoque().ListarProdutos();
 //        
 
     }
