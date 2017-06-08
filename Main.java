@@ -13,13 +13,12 @@ public class Main {
         //Estoque b = new Estoque();
         Produto d = new Produto("d", 123, "10/10/2018", "1234", 5, l);
         Produto c = new Produto("w", 123, "10/10/2018", "1233", 1, l);
-          
-        l.getEstoque();
         
-        l.getVenda().vender("1234", 8, l);
-        
+        l.getVenda().vender("1234", 5, l);
+        l.getVenda().vender("1233", 1, l);
         l.ListarVendas();
-        l.getEstoque().ListarProdutos();
+        System.out.println("Valor vendido: " + l.getMontanteMensal());
+        //l.getEstoque().ListarProdutos();
 //        
 
     }

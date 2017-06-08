@@ -25,12 +25,16 @@ public class Vender{
                     int index = indexVenda(codigo, b); // Pegando posição do produto.
                     b.getVendas().get(index).setUnidadesAdiquiridas(quantidade); //Alterando para quantidades vendidas.
                     verifica2 = true;
+                    double preco = b.getVendas().get(index).getPreco() * b.getVendas().get(index).getUnidadesAdiquiridas(); // Preço do produto.
+                    b.setMontanteMensal(b.getMontanteMensal() + preco);
                 }else if (qtd == 0){ // Se as unidades menos a quantidade forem igual a zero, ou seja, acabou o produto.
                     b.getVendas().add(b.getEstoque().getProdutos().get(i)); //Adicionando produto as vendas
                     int index = indexVenda(codigo, b); // Pegando posição do produto.
                     b.getVendas().get(index).setUnidadesAdiquiridas(quantidade); //Alterando a quantidade do produto.
                     b.getEstoque().getProdutos().remove(i); //Removendo o produto
                     verifica2 = true;
+                    double preco = b.getVendas().get(index).getPreco() * b.getVendas().get(index).getUnidadesAdiquiridas(); // Preço do produto.
+                    b.setMontanteMensal(b.getMontanteMensal() + preco);
                 }
             }
         }
