@@ -121,12 +121,21 @@ public class Fachada {
             String var4 = t.next();
 
             if (var4.equals("1")){
+                System.out.println("Digite nome e cpf do cliente");
+                String nome = t.nextLine();
+                String cpf = t.nextLine();
+                Cliente c = new Cliente(nome, cpf, loja);
+                System.out.println("Cliente adicionado com sucesso");
+                Menu3();
                 break;
             }else if (var4.equals("2")){
                 loja.ListarCliente();
                 Menu3();
                 break;
             }else if(var4.equals("3")){
+                System.out.println("Digite o cpf do cliente");
+                String cpf = t.nextLine();
+                loja.Excluircliente(cpf);
                 Menu3();
                 break;
             }else if (var4.equals("0")){

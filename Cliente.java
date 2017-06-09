@@ -65,13 +65,5 @@ public class Cliente{
     //public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
         
     //}
-
-//    }
-//    public void Comprar(int codigo){
-//        if (estoque.indexOf(codigo) != -1){
-//            int indice = estoque.indexOf(codigo);
-//            //estoque.set(estoque.indexOf(codigo), estoque.get(indice).quantidade - 1);
-//            estoque.remove(codigo);
-//        }
-//    }
+    
 }
