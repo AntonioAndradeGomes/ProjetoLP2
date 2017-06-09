@@ -1,12 +1,6 @@
 package ProjetoLP2;
 import java.util.Scanner;
 
-//import java.text.ParseException;
-//
-//
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-
 public class Fachada {
     Loja loja = new Loja();
     
@@ -17,7 +11,7 @@ public class Fachada {
                     + "1: Menu de contole de estoque\n"
                     + "2: Menu de contole de vendas\n"
                     + "3: Menu de clientes\n"
-                    + "4: Valores adiquiridos pela loja"
+                    + "4: Valores adiquiridos pela loja\n"
                     + "0: Sair\n");
 
 
@@ -70,14 +64,17 @@ public class Fachada {
 //                }
             }else if (var2.equals("2")){
                 buscarProduto();
+                Menu1();
                 break;
             }else if(var2.equals("3")){
                 System.out.println("Digite o codigo do produto que deseja-se excluir do estoque");
                 String code = t.nextLine();
                 loja.getEstoque().ExcluirProduto(code);
+                Menu1();
                 break;
             }else if (var2.equals("4")){
                 loja.getEstoque().ListarProdutos();
+                Menu1();
                 break;
             }else{
                 metodo1();
@@ -92,23 +89,16 @@ public class Fachada {
         Scanner t = new Scanner (System.in);
         while (true){
             System.out.println("Escolha a opcao!\n"
-                    + "1: Adicionar Produto\n"
-                    + "2: Buscar Produto\n"
-                    + "3: Excluir Produto\n"
-                    + "4: Listar Produtos\n"
+                    + "1: Vender Produtos à dinheiro\n"
+                    + "2: Vender Produtos á cadastro do cliente\n"
                     + "0: Sair\n");
             String var3 = t.next();
             if (var3.equals("1")){
                 break;
             }else if (var3.equals("2")){
                 break;
-            }else if(var3.equals("3")){
-                break;
             }else if (var3.equals("0")){
                 metodo1();
-                break;
-        
-            }else if (var3.equals("4")){
                 break;
             }
         }
@@ -134,14 +124,17 @@ public class Fachada {
                 break;
             }else if (var4.equals("2")){
                 loja.ListarCliente();
+                Menu3();
                 break;
             }else if(var4.equals("3")){
+                Menu3();
                 break;
             }else if (var4.equals("0")){
                 metodo1();
                 break;
             }else if (var4.equals("4")){
                 buscarCliente();
+                Menu3();
                 break;
             }else if (var4.equals("5")){
 //                System.out.println("Digite o valor!");
@@ -187,7 +180,28 @@ public class Fachada {
         }
     }
     private void buscarCliente(){
-        
+        Scanner t = new Scanner (System.in);
+        System.out.println("Digite a opção desejada!\n"
+                + "1: Buscar pelo nome do cliente\n"
+                + "2: Buscar pelo cpf do cliente\n"
+                + "0: Sair");
+        String var = t.next();
+        if (var.equals("1")){
+            System.out.println("Digite o nome do cliente!");
+            String var2 = t.nextLine();
+            loja.BuscarClienteNome(var2);
+            Menu3();
+        }else if (var.equals("2")){
+            System.out.println("Digite o codigo do produto!");
+            String var2 = t.nextLine();
+            loja.BuscarClienteCpf(var2);
+            Menu3();            
+        }else if(var.equals("0")){
+            Menu1();
+        }else{
+            System.out.println("Opção invalida!");
+            buscarCliente();
+        }
     }
     
 }

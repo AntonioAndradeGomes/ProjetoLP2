@@ -39,18 +39,24 @@ public class Cliente{
     }
 
     public void setDivida(double divida) {
-        if (divida > 0){
+        if (divida >= 0){
         this.divida = divida;
         }else{
             System.out.println("Valor incorretos.");
         }
     }
+    //seu pagar divida estava errado, quando pagava qualquer coisa a divida ficava zerada]
+    // concertado 9/jun 
     public void PagarDivida(double valor){
-        if (valor > 0){
-            this.divida = this.divida - valor;
-            if (this.divida > 0){
-                this.troco = this.divida;
-                this.divida = 0;
+        if (valor >= 0){
+            if (valor > getDivida()){
+                valor -= getDivida();
+                setDivida(getDivida() -getDivida());
+                System.out.printf("O troco é de %.2f\n"
+                        +"Divida paga com sucesso\n", valor);
+            }else if (valor <= getDivida()){
+                setDivida(getDivida() - valor);
+                System.out.printf("Sua divida continua em %.2f\n", getDivida());
             }
         }else{
             System.out.println("Valor incorreto.");

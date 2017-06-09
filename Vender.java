@@ -1,8 +1,8 @@
 package ProjetoLP2;
 import java.text.ParseException;
 public class Vender{
-    Cliente cliente;
-    
+//como eu criei um objeto vender na classe Loja logo você (Jonathas) vai ter que alterar isso
+//uma maneira mais facil de vender existe? ja q toda vez que for vender eu vou ter que listar os produtos pra saber os codigos deles
     public int indexVenda(String codigo, Loja b){
         for (int i = 0; i < b.getVendas().size(); i++){
             if (codigo.equals(b.getVendas().get(i).getCodigo())){
