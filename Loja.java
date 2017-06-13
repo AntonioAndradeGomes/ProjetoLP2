@@ -54,13 +54,19 @@ public class Loja {
             System.out.println("Nao ha clientes cadastrados!!!");
         }
     }
-    public int BuscarClienteCpf(String cpf){
+    public boolean BuscarClienteCpf(String cpf){
         for (int i = 0; i < this.cadastrocliente.size(); i++){
             if (this.cadastrocliente.get(i).getCpf().equals(cpf)){
-                return i;
-            }
+                System.out.println("cpf\t\t\tNome\t\tDivida");
+                System.out.println("==========================================================================================");
+                System.out.printf("%s", cadastrocliente.get(i).getCpf());
+                System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
+                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+                System.out.println("==========================================================================================");
+                return true;
+                }
         }
-        return -1;
+        return false;
     }
     public void BuscarClienteNome(String nome){
         int ver = 0;

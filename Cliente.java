@@ -6,14 +6,9 @@ public class Cliente{
     private String nome;
     private String cpf;
     private double divida = 0;
-    private double troco;
     private Loja dados;
     private ArrayList <Produto> compras;
 
-    public ArrayList<Produto> getCompras() {
-        return compras;
-    }
-    
     public Cliente(String nome, String cpf, Loja a){
         this.nome = nome;
         this.cpf = cpf;
@@ -21,7 +16,11 @@ public class Cliente{
         compras = new ArrayList<>();
         dados.AddCliente(this);
     }
-
+    
+    
+    public ArrayList<Produto> getCompras() {
+        return compras;
+    }
     public String getNome() {
         return nome;
     }
@@ -66,7 +65,7 @@ public class Cliente{
             System.out.println("Valor incorreto.");
         }
     }
-    public void ListarVendas(){
+    public void ListarVendas(){ //lista o historico de compras do cliente
         System.out.println("Codigo\t\t\tNome\t\tQuantidade\t\tPreço\t\tValidade");
         System.out.println("==========================================================================================");
         for (int i=0; i < this.compras.size(); i++){
@@ -82,8 +81,6 @@ public class Cliente{
         System.out.println("==========================================================================================");
         System.out.printf("Dívida: R$ %.2f\n", getDivida());
     }
-    //public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
-        
-    //}
+
     
 }
