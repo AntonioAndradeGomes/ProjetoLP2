@@ -54,13 +54,13 @@ public class Loja {
             System.out.println("Nao ha clientes cadastrados!!!");
         }
     }
-    public boolean BuscarClienteCpf(String cpf){
+    public int BuscarClienteCpf(String cpf){
         for (int i = 0; i < this.cadastrocliente.size(); i++){
             if (this.cadastrocliente.get(i).getCpf().equals(cpf)){
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
     public void BuscarClienteNome(String nome){
         int ver = 0;
@@ -94,6 +94,22 @@ public class Loja {
             
         }
         System.out.println("==========================================================================================");
+    }
+    public void Pagardivida(String cpf, double valor){
+        for (int i = 0; i < this.getCadastrocliente().size(); i++){
+            if (this.getCadastrocliente().get(i).getCpf().equals(cpf)){
+                this.getCadastrocliente().get(i).PagarDivida(valor);
+            }
+        }
+    }
+    public void ListarVendasCliente(String cpf){
+        for (int i=0; i < this.getCadastrocliente().size(); i++){
+            if (this.getCadastrocliente().get(i).getCpf().equals(cpf)){
+                this.getCadastrocliente().get(i).ListarVendas();
+            }
+            
+            
+        }
     }
     public void Excluircliente(String cpf){
         boolean verifica = false;

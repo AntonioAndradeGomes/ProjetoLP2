@@ -8,13 +8,17 @@ public class Cliente{
     private double divida = 0;
     private double troco;
     private Loja dados;
-   // private ArrayList <Produto> compras;
-    
+    private ArrayList <Produto> compras;
+
+    public ArrayList<Produto> getCompras() {
+        return compras;
+    }
     
     public Cliente(String nome, String cpf, Loja a){
         this.nome = nome;
         this.cpf = cpf;
         this.dados = a;
+        compras = new ArrayList<>();
         dados.AddCliente(this);
     }
 
@@ -61,6 +65,22 @@ public class Cliente{
         }else{
             System.out.println("Valor incorreto.");
         }
+    }
+    public void ListarVendas(){
+        System.out.println("Codigo\t\t\tNome\t\tQuantidade\t\tPreço\t\tValidade");
+        System.out.println("==========================================================================================");
+        for (int i=0; i < this.compras.size(); i++){
+            //Dá pra fazer tudo em uma linha, mas não fica elegante.
+            System.out.printf("%s", this.compras.get(i).getCodigo());
+            System.out.printf("\t\t\t%s", this.compras.get(i).getNome());
+            System.out.printf("\t\t%d", this.compras.get(i).getUnidadesAdiquiridas());
+            System.out.printf("\t\t\t%.2f", this.compras.get(i).getPreco());
+            System.out.printf("\t\t%s\n", this.compras.get(i).getValidade2());
+            
+            
+        }
+        System.out.println("==========================================================================================");
+        System.out.printf("Dívida: R$ %.2f\n", getDivida());
     }
     //public void ListarCompras(){//Listar todas as compras feitas por esse comprador cadastrado
         
