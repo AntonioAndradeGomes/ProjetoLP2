@@ -73,13 +73,22 @@ public class Fachada {
                 loja.getEstoque().ListarProdutos();
                 Menu1();
                 break;
+            }else if(var2.equals("5")){
+                ListarComprasCliente();
+                Menu1();
+                break;
             }else{
                 metodo1();
                 break;
             }    
         }
     }
-    
+    public void ListarComprasCliente(){
+        Scanner t = new Scanner(System.in);
+        System.out.println("Digite o CPF do cliente");
+        String cpf = t.nextLine();
+        loja.ListarVendasCliente(cpf);
+    }
 
     private void Menu2() throws ParseException {
         //Contole de vendas: Classe vender e cliente 
@@ -92,8 +101,12 @@ public class Fachada {
                     + "0: Sair\n");
             String var3 = t.next();
             if (var3.equals("1")){
+                vender();
+                Menu2();
                 break;
             }else if (var3.equals("2")){
+                vendercliente();
+                Menu2();
                 break;
             }else if (var3.equals("0")){
                 metodo1();
@@ -101,7 +114,24 @@ public class Fachada {
             }
         }
     }
-
+    public void vender() throws ParseException{
+        Scanner t = new Scanner(System.in);
+        System.out.println("Digite o código do produto");
+        String codigo = t.nextLine();
+        System.out.println("Digite a quantidade desejada");
+        long unidade = Long.parseLong(t.nextLine());
+        loja.getVenda().vender(codigo, unidade, loja);
+    }
+    public void vendercliente() throws ParseException{
+        Scanner t = new Scanner(System.in);
+        System.out.println("Digite o CPF do cliente");
+        String cpf = t.nextLine();
+        System.out.println("Digite o código do produto");
+        String codigo = t.nextLine();
+        System.out.println("Digite a quantidade desejada");
+        long unidade = Long.parseLong(t.nextLine());
+        loja.getVenda().venderCliente(cpf, codigo, unidade, loja);
+    }
     private void Menu3() throws ParseException{
         //menu de clientes
         Scanner t = new Scanner (System.in);
@@ -111,7 +141,7 @@ public class Fachada {
                     + "1: Adicionar Cliente\n"
                     + "2: Listar Clientes\n"
                     + "3: Excluir Clientes\n" 
-                    + "4: Buscar Clientes/n"
+                    + "4: Buscar Clientes\n"
                     + "5: Receber Valores do Cliente\n" //Jonathas pagar a divida
                     + "0: Sair\n");
 
@@ -141,15 +171,8 @@ public class Fachada {
                 Menu3();
                 break;
             }else if (var4.equals("5")){
-//                System.out.println("Digite o valor!");
-//                try{
-//                    double valor = t.nextDouble();
-//                    
-//                    break;
-//                }catch(Throwable e){
-//                    System.out.println("Valor Digitado Errado!");
-//                    Menu3();
-//                }
+                PagarDivida();
+                Menu3();
                 break;
             }else{
                System.out.println("Redigite a opção!");
@@ -158,6 +181,15 @@ public class Fachada {
         }    
             
     }
+    public void PagarDivida(){
+        Scanner t = new Scanner(System.in);
+        System.out.println("Digite o CPF do cliente");
+        String cpf = t.nextLine();
+                
+        System.out.println("Digite o valor a pagar");
+        double valor = Double.parseDouble(t.nextLine());
+        loja.Pagardivida(cpf, valor);
+    }
 
     private void buscarProduto() throws ParseException {
         Scanner t = new Scanner (System.in);
@@ -165,17 +197,15 @@ public class Fachada {
                 + "1: Buscar pelo nome\n"
                 + "2: Buscar pelo codigo do produto\n"
                 + "0: Sair");
-        String var = t.next();
+        String var = t.nextLine();
         if (var.equals("1")){
             System.out.println("Digite o nome do produto!");
             String var2 = t.nextLine();
             loja.getEstoque().BuscarProdutoNome(var2);
-            Menu1();
         }else if (var.equals("2")){
             System.out.println("Digite o codigo do produto!");
             String var2 = t.nextLine();
-            loja.getEstoque().BuscarProdutoCodigo(var2);
-            Menu1();            
+            loja.getEstoque().BuscarProdutoCodigo(var2);           
         }else if(var.equals("0")){
             Menu1();
         }else{
@@ -209,18 +239,19 @@ public class Fachada {
     }
 
     private void adicionarProduto() throws ParseException {
-        System.out.println("Digite o nome do produto");
-        Scanner t = new Scanner (System.in);
-        String nome = t.nextLine();
-        System.out.println("Digite o preço unitario do produto");
-        double preco = t.nextDouble();
-        System.out.println("Dê um codigo para o produto");
-        String code = t.nextLine();
-        System.out.println("Unidades do produto");
-        long unidade = t.nextLong();
-        System.out.println("Validade do produto (dia/mes/ano com as /)");
-        String validade = t.nextLine();
         try{
+            System.out.println("Digite o nome do produto");
+            Scanner t = new Scanner (System.in);
+            String nome = t.nextLine();
+            System.out.println("Digite o preço unitario do produto");
+            double preco = Double.parseDouble(t.nextLine());
+            System.out.println("Dê um codigo para o produto");
+            String code = t.nextLine();
+            System.out.println("Unidades do produto");
+            long unidade = Long.parseLong(t.nextLine());
+            System.out.println("Validade do produto (dia/mes/ano com as /)");
+            String validade = t.nextLine();
+        //try{
             Produto p = new Produto (nome, preco, validade, code, unidade, loja);
         }catch(Throwable e){
             System.out.println("Erro de algum dado tente novamente");
@@ -230,12 +261,12 @@ public class Fachada {
 
     private void adicionarCliente() {
         Scanner t = new Scanner (System.in);    
-        System.out.println("Digite nome e cpf do cliente");
+        System.out.println("Digite nome do cliente");
         String nome = t.nextLine();
+        System.out.println("Digite o cpf do cliente");
         String cpf = t.nextLine();
         if (loja.BuscarClienteCpf(cpf)){
             System.out.println("Cliente já adicionado na loja");
-            loja.BuscarClienteCpf(cpf);
         }else{
             Cliente c = new Cliente (nome, cpf, loja);
             System.out.println("Cliente adicionado com sucesso");

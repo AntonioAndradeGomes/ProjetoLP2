@@ -42,12 +42,12 @@ public class Loja {
     }
     public void ListarCliente (){
         if(this.cadastrocliente.size() > 0){
-            System.out.println("cpf\t\t\tNome\t\tDivida");
+            System.out.println("cpf\t\t\tNome\t\t\tDivida");
             System.out.println("==========================================================================================");
             for (int i=0; i < cadastrocliente.size(); i++){
                 //Dá pra fazer tudo em uma linha, mas não fica elegante.
                 System.out.printf("%s", cadastrocliente.get(i).getCpf()); System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome()); 
-                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+                System.out.printf("\t\t\t%.2f\n", cadastrocliente.get(i).getDivida());
             }
             System.out.println("==========================================================================================");
         }else{
