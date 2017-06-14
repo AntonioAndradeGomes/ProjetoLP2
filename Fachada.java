@@ -64,9 +64,7 @@ public class Fachada {
                 Menu1();
                 break;
             }else if(var2.equals("3")){
-                System.out.println("Digite o codigo do produto que deseja-se excluir do estoque");
-                String code = t.nextLine();
-                loja.getEstoque().ExcluirProduto(code);
+                Excluirproduto();
                 Menu1();
                 break;
             }else if (var2.equals("4")){
@@ -81,6 +79,16 @@ public class Fachada {
                 metodo1();
                 break;
             }    
+        }
+    }
+    public void Excluirproduto(){
+        if(loja.getEstoque().getProdutos().size() > 0){
+            Scanner t = new Scanner(System.in);
+            System.out.println("Digite o codigo do produto que deseja-se excluir do estoque");
+            String code = t.nextLine();
+            loja.getEstoque().ExcluirProduto(code);
+        }else{
+            System.out.println("Não existe produto no estoque");
         }
     }
     public void ListarComprasCliente(){
@@ -199,13 +207,21 @@ public class Fachada {
                 + "0: Sair");
         String var = t.nextLine();
         if (var.equals("1")){
-            System.out.println("Digite o nome do produto!");
-            String var2 = t.nextLine();
-            loja.getEstoque().BuscarProdutoNome(var2);
+            if(loja.getEstoque().getProdutos().size() > 0){
+                System.out.println("Digite o nome do produto!");
+                String var2 = t.nextLine();
+                loja.getEstoque().BuscarProdutoNome(var2);
+            }else{
+                System.out.println("Não existe produtos no estoque");
+            }
         }else if (var.equals("2")){
-            System.out.println("Digite o codigo do produto!");
-            String var2 = t.nextLine();
-            loja.getEstoque().BuscarProdutoCodigo(var2);           
+            if(loja.getEstoque().getProdutos().size() > 0){
+                System.out.println("Digite o codigo do produto!");
+                String var2 = t.nextLine();
+                loja.getEstoque().BuscarProdutoCodigo(var2);
+            }else{
+                System.out.println("Não existe produtos no estoque");
+            }
         }else if(var.equals("0")){
             Menu1();
         }else{
