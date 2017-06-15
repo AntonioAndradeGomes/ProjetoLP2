@@ -1,6 +1,16 @@
 package ProjetoLP2;
 import java.text.ParseException;
 public class Vender{
+    
+    private static Vender singleton;
+    
+    private Vender(){}
+    public static synchronized Vender getInstance(){
+        if (singleton == null){
+            singleton = new Vender();
+        }
+        return singleton;
+    }
     public int indexVenda(String codigo, Loja b){ //Utilizado para pegar o index do produto vendido
         for (int i = 0; i < b.getVendas().size(); i++){
             if (codigo.equals(b.getVendas().get(i).getCodigo())){

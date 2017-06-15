@@ -3,7 +3,7 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class Fachada {
-    Loja loja = new Loja();
+    Loja loja = Loja.getInstance();
     
     public void metodo1() throws ParseException{
         Scanner t = new Scanner (System.in);

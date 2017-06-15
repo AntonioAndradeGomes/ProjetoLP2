@@ -12,7 +12,6 @@ public class Produto{
     private String validade2; // usada para receber a String validade para ser impresso.
     private Date validade;
     private String codigo;
-//    private boolean verificavalidade;
     private long unidadesAdiquiridas;
     private Loja dados; //Criado para pegar referência de loja
 
@@ -69,15 +68,6 @@ public class Produto{
     public String getCodigo() {
         return codigo;
     }
-
-
-//    public boolean isVerificavalidade() {
-//        return verificavalidade;
-//    }
-//
-//    public void setVerificavalidade(boolean verificavalidade) {
-//        this.verificavalidade = verificavalidade;
-//    }
 
     public long getUnidadesAdiquiridas() {
         return unidadesAdiquiridas;

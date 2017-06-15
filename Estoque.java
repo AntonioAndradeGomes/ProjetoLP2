@@ -2,11 +2,14 @@ package ProjetoLP2;
 import java.util.ArrayList;
 class Estoque{
     private ArrayList<Produto> produtos;
-
-    //só pode ser criado um estoque para essa loja
-    public Estoque(){
-
-        produtos = new ArrayList<>();
+    private static Estoque singleton;
+    private Estoque(){}
+    public static synchronized Estoque getInstance(){
+        if (singleton == null){
+            singleton = new Estoque();
+            singleton.produtos = new ArrayList<>();
+        }
+        return singleton;
     }
     
     public void addProd(Produto c){ //Adiciona produto ao estoque, e esse produto vai ser adicionado na loja.

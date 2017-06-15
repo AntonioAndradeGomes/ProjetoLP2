@@ -8,17 +8,24 @@ public class Loja {
     private ArrayList <Cliente> cadastrocliente; //Lista de clientes pertencentes a loja
     private ArrayList <Produto> vendas; //Criando lista de vendas
     private Vender venda; //Criando comando de vender.
-
-    public Loja (){
-
+    private static Loja singleton; //Singleton
+    
+    private Loja (){
         this.montanteMensal = 0.0; //Quanto a loja possui de dinheiro
         this.cadastrocliente = new ArrayList<Cliente>(); //Lista de clientes pertencentes a loja
         this.vendas = new ArrayList<>(); //Criando lista de vendas
-        this.estoque = new Estoque(); //Para loja iniciar com um estoque.
-        this.venda = new Vender(); //Criando  de vender.
+        this.estoque = Estoque.getInstance(); //Para loja iniciar com um estoque.
+        this.venda = Vender.getInstance(); //Criando  de vender.
 
     }
-
+    
+    public static synchronized Loja getInstance(){ //Método singleton
+        if (singleton == null){
+            singleton = new Loja();
+        }
+        return singleton;
+    }
+    
     public Vender getVenda() {
         return venda;
     }
