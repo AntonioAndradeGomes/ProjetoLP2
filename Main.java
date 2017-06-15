@@ -8,6 +8,7 @@ public class Main {
         
         Fachada fachada = new Fachada();
         fachada.metodo1();
+        
 //        
 //        Loja l = new Loja();
 //        Cliente c = new Cliente("Antonio", "12", l);

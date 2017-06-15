@@ -9,8 +9,8 @@ class Estoque{
         produtos = new ArrayList<>();
     }
     
-    public void addProd(Produto c){
-        this.produtos.add(c);
+    public void addProd(Produto c){ //Adiciona produto ao estoque, e esse produto vai ser adicionado na loja.
+        this.produtos.add(c); //Pegando referência do produto.
     }
 
     public void setProdutos(ArrayList<Produto> produtos) {

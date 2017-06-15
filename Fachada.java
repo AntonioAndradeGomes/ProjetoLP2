@@ -129,26 +129,38 @@ public class Fachada {
     }
     public void vender() throws ParseException{
         if (loja.getEstoque().getProdutos().size() > 0){
+            loja.getEstoque().ListarProdutos();
             Scanner t = new Scanner(System.in);
             System.out.println("Digite o código do produto");
             String codigo = t.nextLine();
-            System.out.println("Digite a quantidade desejada");
-            long unidade = Long.parseLong(t.nextLine());
-            loja.getVenda().vender(codigo, unidade, loja);
+            try{
+                System.out.println("Digite a quantidade desejada");
+                long unidade = Long.parseLong(t.nextLine());
+                loja.getVenda().vender(codigo, unidade, loja);
+            }catch(NumberFormatException erro){
+                System.out.println("Dado inválido, tente novamente");
+                vender();
+            }    
         }else{
             System.out.println("Não existe produtos no estoque para vender");
         }    
     }
     public void vendercliente() throws ParseException{
         if (loja.getEstoque().getProdutos().size() > 0){
+            loja.getEstoque().ListarProdutos();
             Scanner t = new Scanner(System.in);
             System.out.println("Digite o CPF do cliente");
             String cpf = t.nextLine();
             System.out.println("Digite o código do produto");
             String codigo = t.nextLine();
-            System.out.println("Digite a quantidade desejada");
-            long unidade = Long.parseLong(t.nextLine());
-            loja.getVenda().venderCliente(cpf, codigo, unidade, loja);
+            try{
+                System.out.println("Digite a quantidade desejada");
+                long unidade = Long.parseLong(t.nextLine());
+                loja.getVenda().venderCliente(cpf, codigo, unidade, loja);
+            }catch(NumberFormatException erro){
+                System.out.println("Dado inválido, tente novamente");
+                vendercliente();
+            }
         }else{
             System.out.println("Não existe produtos no estoque para vender");
         }    
@@ -163,7 +175,7 @@ public class Fachada {
                     + "2: Listar Clientes\n"
                     + "3: Excluir Clientes\n" 
                     + "4: Buscar Clientes\n"
-                    + "5: Receber Valores do Cliente\n" //Jonathas pagar a divida
+                    + "5: Receber pagamento do Cliente\n" //Jonathas pagar a divida
                     + "0: Sair\n");
 
 
@@ -203,13 +215,21 @@ public class Fachada {
             
     }
     public void PagarDivida(){
-        Scanner t = new Scanner(System.in);
-        System.out.println("Digite o CPF do cliente");
-        String cpf = t.nextLine();
-                
-        System.out.println("Digite o valor a pagar");
-        double valor = Double.parseDouble(t.nextLine());
-        loja.Pagardivida(cpf, valor);
+        if(loja.getCadastrocliente().size() > 0){
+            Scanner t = new Scanner(System.in);
+            System.out.println("Digite o CPF do cliente");
+            String cpf = t.nextLine();
+            try{
+                System.out.println("Digite o valor a pagar");
+                double valor = Double.parseDouble(t.nextLine());
+                loja.Pagardivida(cpf, valor, loja);
+            }catch(NumberFormatException erro){
+                System.out.println("Dado inválido, tente novamente");
+                PagarDivida();
+            }
+        }else{
+            System.out.println("Não existe clientes cadastrados");
+        }
     }
 
     private void buscarProduto() throws ParseException {
@@ -243,28 +263,32 @@ public class Fachada {
         }
     }
     private void buscarCliente() throws ParseException{
-        Scanner t = new Scanner (System.in);
-        System.out.println("Digite a opção desejada!\n"
-                + "1: Buscar pelo nome do cliente\n"
-                + "2: Buscar pelo cpf do cliente\n"
-                + "0: Sair");
-        String var = t.next();
-        if (var.equals("1")){
-            System.out.println("Digite o nome do cliente!");
-            String var2 = t.nextLine();
-            loja.BuscarClienteNome(var2);
-            Menu3();
-        }else if (var.equals("2")){
-            System.out.println("Digite o codigo do produto!");
-            String var2 = t.nextLine();
-            loja.BuscarClienteCpf(var2);
-            Menu3();            
-        }else if(var.equals("0")){
-            Menu1();
+        if(loja.getCadastrocliente().size() > 0){
+            Scanner t = new Scanner (System.in);
+            System.out.println("Digite a opção desejada!\n"
+                    + "1: Buscar pelo nome do cliente\n"
+                    + "2: Buscar pelo cpf do cliente\n"
+                    + "0: Sair");
+            String var = t.nextLine();
+            if (var.equals("1")){
+                System.out.println("Digite o nome do cliente!");
+                String var2 = t.nextLine();
+                loja.BuscarClienteNome(var2);
+                Menu3();
+            }else if (var.equals("2")){
+                System.out.println("Digite o CPF do cliente!");
+                String var2 = t.nextLine();
+                loja.BuscarClienteCpf(var2);
+                Menu3();            
+            }else if(var.equals("0")){
+                Menu1();
+            }else{
+                System.out.println("Opção invalida!");
+                buscarCliente();
+            }
         }else{
-            System.out.println("Opção invalida!");
-            buscarCliente();
-        }
+            System.out.println("Não existe clientes cadastrados");
+        }    
     }
 
     private void adicionarProduto() throws ParseException {
@@ -305,8 +329,15 @@ public class Fachada {
         String nome = t.nextLine();
         System.out.println("Digite o cpf do cliente");
         String cpf = t.nextLine();
-        if (loja.BuscarClienteCpf(cpf)){
-            System.out.println("Cliente já adicionado na loja");
+        boolean verifica = false;
+        for (int i = 0; i < loja.getCadastrocliente().size(); i++){
+            if (loja.getCadastrocliente().get(i).getCpf().equals(cpf)){
+                verifica = true;
+                break;
+            }
+        }    
+        if (verifica == true){
+            System.out.println("Existe um cliente cadastrado na loja com este CPF");
         }else{
             Cliente c = new Cliente (nome, cpf, loja);
             System.out.println("Cliente adicionado com sucesso");

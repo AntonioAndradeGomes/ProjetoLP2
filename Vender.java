@@ -1,9 +1,7 @@
 package ProjetoLP2;
 import java.text.ParseException;
 public class Vender{
-//como eu criei um objeto vender na classe Loja logo você (Jonathas) vai ter que alterar isso
-//uma maneira mais facil de vender existe? ja q toda vez que for vender eu vou ter que listar os produtos pra saber os codigos deles
-    public int indexVenda(String codigo, Loja b){
+    public int indexVenda(String codigo, Loja b){ //Utilizado para pegar o index do produto vendido
         for (int i = 0; i < b.getVendas().size(); i++){
             if (codigo.equals(b.getVendas().get(i).getCodigo())){
                 return i;
@@ -47,7 +45,7 @@ public class Vender{
             System.out.println("Não foi possivel realizar a compra.");
         }
     }
-    public int indexVendaCliente(String cpf, Loja b){
+    public int indexVendaCliente(String cpf, Loja b){ //Pegar index certo do cliente
         for (int i = 0; i < b.getCadastrocliente().size(); i++){
             if (cpf.equals(b.getCadastrocliente().get(i).getCpf())){
                 return i;

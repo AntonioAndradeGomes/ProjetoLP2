@@ -7,13 +7,13 @@ public class Cliente{
     private String cpf;
     private double divida = 0;
     private Loja dados;
-    private ArrayList <Produto> compras;
+    private ArrayList <Produto> compras; //Compras do cliente
 
     public Cliente(String nome, String cpf, Loja a){
         this.nome = nome;
         this.cpf = cpf;
         this.dados = a;
-        compras = new ArrayList<>();
+        compras = new ArrayList<>(); //Compras do cliente
         dados.AddCliente(this);
     }
     
@@ -42,22 +42,22 @@ public class Cliente{
     }
 
     public void setDivida(double divida) {
-        if (divida >= 0){
-        this.divida = divida;
+        if (divida >= 0){ //Já que quando paga fica 0 a dívida, então tem de ter igual a 0
+            this.divida = divida;
         }else{
-            System.out.println("Valor incorretos.");
+            System.out.println("Valor incorreto.");
         }
     }
-    //seu pagar divida estava errado, quando pagava qualquer coisa a divida ficava zerada]
-    // concertado 9/jun 
-    public void PagarDivida(double valor){
+    public void PagarDivida(double valor, Loja b){ //Criado referência para alterar montante mensal da loja com o que pagar.
         if (valor >= 0){ //Verifica se valor não é negativo
             if (valor > getDivida()){ //Dinheiro maior que divida, então possui troco.
+                b.setMontanteMensal(b.getMontanteMensal() + getDivida()); //Adicionando dinheiro pago ao motante mensal.
                 double troco = valor - getDivida();
                 setDivida(0); //Se valor é maior que divida, logo sempre vai ser zero a divida
                 System.out.printf("O troco é de %.2f\n"
                         +"Divida paga com sucesso\n", troco);
-            }else if (valor <= getDivida()){ //Dinheiro 
+            }else if (valor <= getDivida()){ //Verifica se valor é menor que a dívida
+                b.setMontanteMensal(b.getMontanteMensal() + valor); //Adicionando dinheiro pago ao motante mensal.
                 setDivida(getDivida() - valor);
                 System.out.printf("Sua divida continua em %.2f\n", getDivida());
             }

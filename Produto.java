@@ -14,7 +14,7 @@ public class Produto{
     private String codigo;
     private boolean verificavalidade;
     private long unidadesAdiquiridas;
-    private Loja dados;
+    private Loja dados; //Criado para pegar referência de loja
 
     public Produto(String nome, double preco, String validade, 
             String codigo, long unidadesAdiquiridas, Loja b) throws ParseException {
@@ -24,7 +24,7 @@ public class Produto{
         setVal(validade);
         this.codigo = codigo;
         setUnidadesAdiquiridas(unidadesAdiquiridas);
-        //tem que verificar isso em tempo de execução
+        //Verifica isso em tempo de execução
         this.dados = b; // Referencia de qual estoque vai ser salvo
         if (Validade() == true && this.unidadesAdiquiridas > 0 && this.preco > 0){ //Comando para adicionar somente produtos no prazo de validade.
             dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
@@ -66,10 +66,6 @@ public class Produto{
         return validade;
     }
 
-    //public void setValidade(Date validade) {
-    //    this.validade = validade;
-    //}
-
     public String getCodigo() {
         return codigo;
     }
@@ -108,11 +104,11 @@ public class Produto{
         validadeproduto.setTime(this.getValidade());
         //Criando um objeto calendar com a data atual.
         Calendar hoje = Calendar.getInstance();
-        //Calculo da idade
+        //Cálculo da validade
         if (validadeproduto.get(Calendar.YEAR) > hoje.get(Calendar.YEAR)){
             return true;
         }else if (validadeproduto.get(Calendar.YEAR) == hoje.get(Calendar.YEAR) && validadeproduto.get(Calendar.MONTH) >= hoje.get(Calendar.MONTH) && validadeproduto.get(Calendar.DAY_OF_WEEK) > hoje.get(Calendar.DAY_OF_WEEK)){
-                return true;
+            return true;
         }else{
             return false;
         }

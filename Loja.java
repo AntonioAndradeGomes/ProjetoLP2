@@ -3,19 +3,19 @@ import java.util.ArrayList;
 
 public class Loja {
     
-    private double montanteMensal;
-    private Estoque estoque;
-    private ArrayList <Cliente> cadastrocliente;
-    private ArrayList <Produto> vendas;
-    private Vender venda;
+    private double montanteMensal; //Quanto a loja possui de dinheiro
+    private Estoque estoque; //Para loja iniciar com um estoque.
+    private ArrayList <Cliente> cadastrocliente; //Lista de clientes pertencentes a loja
+    private ArrayList <Produto> vendas; //Criando lista de vendas
+    private Vender venda; //Criando comando de vender.
 
     public Loja (){
 
-        this.montanteMensal = 0.0;
-        this.cadastrocliente = new ArrayList<Cliente>();
-        this.vendas = new ArrayList<>();
-        this.estoque = new Estoque();
-        this.venda = new Vender();
+        this.montanteMensal = 0.0; //Quanto a loja possui de dinheiro
+        this.cadastrocliente = new ArrayList<Cliente>(); //Lista de clientes pertencentes a loja
+        this.vendas = new ArrayList<>(); //Criando lista de vendas
+        this.estoque = new Estoque(); //Para loja iniciar com um estoque.
+        this.venda = new Vender(); //Criando comando de vender.
 
     }
 
@@ -27,7 +27,7 @@ public class Loja {
         this.venda = venda;
     }
     public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
-        this.estoque.addProd(c);
+        this.estoque.addProd(c); // Adicionando produto ao estoque de loja. Em estoque já tem esse comando e estoque também possui sua própria lista de produtos.
     }
 
     public Estoque getEstoque() {
@@ -54,34 +54,37 @@ public class Loja {
             System.out.println("Nao ha clientes cadastrados!!!");
         }
     }
-    public boolean BuscarClienteCpf(String cpf){
+    public void BuscarClienteCpf(String cpf){
+        boolean verifica = false;
         for (int i = 0; i < this.cadastrocliente.size(); i++){
             if (this.cadastrocliente.get(i).getCpf().equals(cpf)){
                 System.out.println("cpf\t\t\tNome\t\tDivida");
                 System.out.println("==========================================================================================");
                 System.out.printf("%s", cadastrocliente.get(i).getCpf());
                 System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
-                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+                System.out.printf("\t\t%.2f\n", cadastrocliente.get(i).getDivida());
                 System.out.println("==========================================================================================");
-                return true;
+                verifica = true;
                 }
         }
-        return false;
+        if (verifica = false){
+            System.out.println("Não existe clientes cadastros com esse CPF");
+        }
     }
     public void BuscarClienteNome(String nome){
-        int ver = 0;
+        boolean verifica = false;
         for (int i = 0; i < this.cadastrocliente.size(); i++){
             if (this.cadastrocliente.get(i).getNome().equals(nome)){
-                ver += 1;
+                verifica = true;
                 System.out.println("cpf\t\t\tNome\t\tDivida");
                 System.out.println("==========================================================================================");
                 System.out.printf("%s", cadastrocliente.get(i).getCpf());
                 System.out.printf("\t\t\t%s", cadastrocliente.get(i).getNome());
-                System.out.printf("\t\t%d", cadastrocliente.get(i).getDivida());
+                System.out.printf("\t\t%.2f\n", cadastrocliente.get(i).getDivida());
                 System.out.println("==========================================================================================");
             }
         }
-        if (ver == 0){
+        if (verifica == false){
             System.out.println("Nao há clientes com tal nome");
         }
     }
@@ -101,11 +104,17 @@ public class Loja {
         }
         System.out.println("==========================================================================================");
     }
-    public void Pagardivida(String cpf, double valor){
+    public void Pagardivida(String cpf, double valor, Loja b){
+        boolean verifica = false;
         for (int i = 0; i < this.getCadastrocliente().size(); i++){
             if (this.getCadastrocliente().get(i).getCpf().equals(cpf)){
-                this.getCadastrocliente().get(i).PagarDivida(valor);
+                this.getCadastrocliente().get(i).PagarDivida(valor, b); 
+                verifica = true; 
+                break; //Se só existe um CPF único não precisa continuar verificando
             }
+        }
+        if(verifica = false){
+            System.out.println("Não existe clientes cadastrados com esse CPF");
         }
     }
     public void ListarVendasCliente(String cpf){
