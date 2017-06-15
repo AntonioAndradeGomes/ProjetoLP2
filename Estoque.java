@@ -13,10 +13,6 @@ class Estoque{
         this.produtos.add(c); //Pegando referência do produto.
     }
 
-    public void setProdutos(ArrayList<Produto> produtos) {
-        this.produtos = produtos;
-    }
-    
     public ArrayList<Produto> getProdutos() {
         return produtos;
     }

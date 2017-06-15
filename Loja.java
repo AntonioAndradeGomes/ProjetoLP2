@@ -15,7 +15,7 @@ public class Loja {
         this.cadastrocliente = new ArrayList<Cliente>(); //Lista de clientes pertencentes a loja
         this.vendas = new ArrayList<>(); //Criando lista de vendas
         this.estoque = new Estoque(); //Para loja iniciar com um estoque.
-        this.venda = new Vender(); //Criando comando de vender.
+        this.venda = new Vender(); //Criando  de vender.
 
     }
 

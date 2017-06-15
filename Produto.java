@@ -12,7 +12,7 @@ public class Produto{
     private String validade2; // usada para receber a String validade para ser impresso.
     private Date validade;
     private String codigo;
-    private boolean verificavalidade;
+//    private boolean verificavalidade;
     private long unidadesAdiquiridas;
     private Loja dados; //Criado para pegar referência de loja
 
@@ -20,7 +20,7 @@ public class Produto{
             String codigo, long unidadesAdiquiridas, Loja b) throws ParseException {
         
         this.nome = nome;
-        this.preco = preco;
+        setPreco(preco);
         setVal(validade);
         this.codigo = codigo;
         setUnidadesAdiquiridas(unidadesAdiquiridas);
@@ -70,17 +70,14 @@ public class Produto{
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
 
-    public boolean isVerificavalidade() {
-        return verificavalidade;
-    }
-
-    public void setVerificavalidade(boolean verificavalidade) {
-        this.verificavalidade = verificavalidade;
-    }
+//    public boolean isVerificavalidade() {
+//        return verificavalidade;
+//    }
+//
+//    public void setVerificavalidade(boolean verificavalidade) {
+//        this.verificavalidade = verificavalidade;
+//    }
 
     public long getUnidadesAdiquiridas() {
         return unidadesAdiquiridas;
