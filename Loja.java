@@ -109,12 +109,16 @@ public class Loja {
         }
     }
     public void ListarVendasCliente(String cpf){
+        boolean verifica = false;
         for (int i=0; i < this.getCadastrocliente().size(); i++){
             if (this.getCadastrocliente().get(i).getCpf().equals(cpf)){
                 this.getCadastrocliente().get(i).ListarVendas();
-            }
-            
-            
+                verifica = true;
+                break; //Já que só ira possuir um CPF não é necessário verificar mais quando achar
+            }  
+        }
+        if (verifica == false){
+            System.out.println("Cliente não foi encontrado");
         }
     }
     public void Excluircliente(String cpf){

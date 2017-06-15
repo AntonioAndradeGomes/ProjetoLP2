@@ -30,7 +30,8 @@ public class Fachada {
                 Menu3();
                 break;
             }else if (var1.equals("4")){
-                System.out.println(loja.getMontanteMensal());
+                System.out.printf("R$ %.2f\n", loja.getMontanteMensal());
+                metodo1();
                 break;
             }else if (var1.equals("0")){
                 break;
@@ -92,10 +93,14 @@ public class Fachada {
         }
     }
     public void ListarComprasCliente(){
-        Scanner t = new Scanner(System.in);
-        System.out.println("Digite o CPF do cliente");
-        String cpf = t.nextLine();
-        loja.ListarVendasCliente(cpf);
+        if (loja.getCadastrocliente().size() > 0){
+            Scanner t = new Scanner(System.in);
+            System.out.println("Digite o CPF do cliente");
+            String cpf = t.nextLine();
+            loja.ListarVendasCliente(cpf);
+        }else{
+            System.out.println("Não existe cliente cadastrado");
+        }    
     }
 
     private void Menu2() throws ParseException {
@@ -123,22 +128,30 @@ public class Fachada {
         }
     }
     public void vender() throws ParseException{
-        Scanner t = new Scanner(System.in);
-        System.out.println("Digite o código do produto");
-        String codigo = t.nextLine();
-        System.out.println("Digite a quantidade desejada");
-        long unidade = Long.parseLong(t.nextLine());
-        loja.getVenda().vender(codigo, unidade, loja);
+        if (loja.getEstoque().getProdutos().size() > 0){
+            Scanner t = new Scanner(System.in);
+            System.out.println("Digite o código do produto");
+            String codigo = t.nextLine();
+            System.out.println("Digite a quantidade desejada");
+            long unidade = Long.parseLong(t.nextLine());
+            loja.getVenda().vender(codigo, unidade, loja);
+        }else{
+            System.out.println("Não existe produtos no estoque para vender");
+        }    
     }
     public void vendercliente() throws ParseException{
-        Scanner t = new Scanner(System.in);
-        System.out.println("Digite o CPF do cliente");
-        String cpf = t.nextLine();
-        System.out.println("Digite o código do produto");
-        String codigo = t.nextLine();
-        System.out.println("Digite a quantidade desejada");
-        long unidade = Long.parseLong(t.nextLine());
-        loja.getVenda().venderCliente(cpf, codigo, unidade, loja);
+        if (loja.getEstoque().getProdutos().size() > 0){
+            Scanner t = new Scanner(System.in);
+            System.out.println("Digite o CPF do cliente");
+            String cpf = t.nextLine();
+            System.out.println("Digite o código do produto");
+            String codigo = t.nextLine();
+            System.out.println("Digite a quantidade desejada");
+            long unidade = Long.parseLong(t.nextLine());
+            loja.getVenda().venderCliente(cpf, codigo, unidade, loja);
+        }else{
+            System.out.println("Não existe produtos no estoque para vender");
+        }    
     }
     private void Menu3() throws ParseException{
         //menu de clientes
@@ -256,19 +269,30 @@ public class Fachada {
 
     private void adicionarProduto() throws ParseException {
         try{
-            System.out.println("Digite o nome do produto");
             Scanner t = new Scanner (System.in);
-            String nome = t.nextLine();
-            System.out.println("Digite o preço unitario do produto");
-            double preco = Double.parseDouble(t.nextLine());
             System.out.println("Dê um codigo para o produto");
             String code = t.nextLine();
-            System.out.println("Unidades do produto");
-            long unidade = Long.parseLong(t.nextLine());
-            System.out.println("Validade do produto (dia/mes/ano com as /)");
-            String validade = t.nextLine();
-        //try{
-            Produto p = new Produto (nome, preco, validade, code, unidade, loja);
+            boolean verifica = false; // verificar se existe produto.
+            for (int i = 0; i<loja.getEstoque().getProdutos().size(); i++){
+                if (loja.getEstoque().getProdutos().get(i).getCodigo().equals(code)){
+                    verifica = true; // verificar se há produto no estoque para listar.
+                    break; // Quando achar pelo menos um produto.
+                }
+            }
+            if (verifica == false){
+                System.out.println("Digite o nome do produto");
+                String nome = t.nextLine();
+                System.out.println("Digite o preço unitario do produto");
+                double preco = Double.parseDouble(t.nextLine());
+                System.out.println("Unidades do produto");
+                long unidade = Long.parseLong(t.nextLine());
+                System.out.println("Validade do produto (dia/mes/ano com as /)");
+                String validade = t.nextLine();
+                Produto p = new Produto (nome, preco, validade, code, unidade, loja);
+            }else{
+                System.out.println("Existe um produto com o mesmo código, tente novamente");
+                adicionarProduto(); //Famosa recursão.
+            }
         }catch(Throwable e){
             System.out.println("Erro de algum dado tente novamente");
             adicionarProduto();

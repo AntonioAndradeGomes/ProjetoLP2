@@ -28,8 +28,9 @@ public class Produto{
         this.dados = b; // Referencia de qual estoque vai ser salvo
         if (Validade() == true && this.unidadesAdiquiridas > 0 && this.preco > 0){ //Comando para adicionar somente produtos no prazo de validade.
             dados.addProduto(this); // Passando parametro de referência para produto ser salvo no estoque
+            System.out.println("Produto criado e adicionado ao estoque");
         }else{
-            System.out.println("Produto vencido, quantidade negativa ou preco negativo.");
+            System.out.println("Produto vencido, quantidade negativa ou preco negativo");
         }
         
     }

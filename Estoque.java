@@ -102,7 +102,7 @@ class Estoque{
             }
             System.out.println("==========================================================================================");
         }else{
-            System.out.println("Não existe produtos no estoque");
+            System.out.println("Não existe produto no estoque");
         }
     }
 }

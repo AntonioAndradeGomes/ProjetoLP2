@@ -81,7 +81,7 @@ public class Vender{
                     b.getCadastrocliente().get(index).getCompras().get(index2).setUnidadesAdiquiridas(quantidade); //Alterando para quantidades vendidas.
                     verifica2 = true;
                     double preco = b.getCadastrocliente().get(index).getCompras().get(index2).getPreco() * b.getCadastrocliente().get(index).getCompras().get(index2).getUnidadesAdiquiridas(); // Preço do produto.
-                    b.getCadastrocliente().get(index).setDivida(b.getCadastrocliente().get(index).getDivida() + preco);
+                    b.getCadastrocliente().get(index).setDivida(b.getCadastrocliente().get(index).getDivida() + preco); //Adicionando dívida ao cliente.
                 }else if (qtd == 0){ // Se as unidades menos a quantidade forem igual a zero, ou seja, acabou o produto.
                     int index = indexVendaCliente(cpf, b); // Pegando posição do cliente.
                     b.getCadastrocliente().get(index).getCompras().add(b.getEstoque().getProdutos().get(i)); //Adicionando produto as vendas
@@ -90,13 +90,13 @@ public class Vender{
                     b.getEstoque().getProdutos().remove(i); //Removendo o produto
                     verifica2 = true;
                     double preco = b.getCadastrocliente().get(index).getCompras().get(index2).getPreco() * b.getCadastrocliente().get(index).getCompras().get(index2).getUnidadesAdiquiridas(); // Preço do produto.
-                    b.getCadastrocliente().get(index).setDivida(b.getCadastrocliente().get(index).getDivida() + preco);
+                    b.getCadastrocliente().get(index).setDivida(b.getCadastrocliente().get(index).getDivida() + preco); //Adicionando dívida ao cliente.
                 }
             }
         }
         //Central de Verificações.
         if (verifica == false){
-            System.out.println("Código errado.");
+            System.out.println("Código ou CPF errado.");
         }else if(verifica == true && verifica2 == true){
             System.out.println("Compra realizada com Sucesso.");
         }else if(verifica == true && verifica2 == false){
