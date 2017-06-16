@@ -30,9 +30,6 @@ public class Loja {
         return venda;
     }
 
-    public void setVenda(Vender venda) {
-        this.venda = venda;
-    }
     public void addProduto(Produto c){ // Comando experto para add produtos no Estoque
         this.estoque.addProd(c); // Adicionando produto ao estoque de loja. Em estoque já tem esse comando e estoque também possui sua própria lista de produtos.
     }
@@ -41,9 +38,7 @@ public class Loja {
         return estoque; 
     }
 
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
-    }
+
     public void AddCliente (Cliente c){
         this.cadastrocliente.add(c);
     }
@@ -158,19 +153,11 @@ public class Loja {
         return cadastrocliente;
     }
 
-    public void setCadastrocliente(ArrayList<Cliente> cadastrocliente) {
-        this.cadastrocliente = cadastrocliente;
-    }
-
     public ArrayList<Produto> getVendas() {
         return vendas;
     }
 
-    public void setVendas(ArrayList<Produto> vendas) {
-        this.vendas = vendas;
-    }
-
     public void setMontanteMensal(double montanteMensal) {
-        this.montanteMensal = montanteMensal;
-    }
+       this.montanteMensal = montanteMensal;
+   }
 }

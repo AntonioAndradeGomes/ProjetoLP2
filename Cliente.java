@@ -14,9 +14,8 @@ public class Cliente{
         this.cpf = cpf;
         this.dados = a;
         compras = new ArrayList<>(); //Compras do cliente
-        dados.AddCliente(this);
+        dados.AddCliente(this); //a loja é um dos parametros da classe pois assim que chamamos o contrutor adicionamos a lista de Clientes
     }
-    
     
     public ArrayList<Produto> getCompras() {
         return compras;
@@ -76,8 +75,6 @@ public class Cliente{
                 System.out.printf("\t\t%d", this.compras.get(i).getUnidadesAdiquiridas());
                 System.out.printf("\t\t\t%.2f", this.compras.get(i).getPreco());
                 System.out.printf("\t\t%s\n", this.compras.get(i).getValidade2());
-
-
             }
             System.out.println("==========================================================================================");
             System.out.printf("Dívida: R$ %.2f\n", getDivida());

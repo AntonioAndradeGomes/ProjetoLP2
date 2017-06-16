@@ -1,10 +1,8 @@
 package ProjetoLP2;
-
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 
 public class Produto{
     private String nome;

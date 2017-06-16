@@ -1,7 +1,6 @@
 package ProjetoLP2;
 import java.text.ParseException;
 public class Vender{
-    
     private static Vender singleton;
     
     private Vender(){}

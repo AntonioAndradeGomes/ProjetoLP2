@@ -3,7 +3,9 @@ import java.util.ArrayList;
 class Estoque{
     private ArrayList<Produto> produtos;
     private static Estoque singleton;
+    
     private Estoque(){}
+    
     public static synchronized Estoque getInstance(){
         if (singleton == null){
             singleton = new Estoque();
@@ -96,8 +98,6 @@ class Estoque{
                 System.out.printf("\t\t%d", produtos.get(i).getUnidadesAdiquiridas());
                 System.out.printf("\t\t\t%.2f", produtos.get(i).getPreco());
                 System.out.printf("\t\t%s\n", produtos.get(i).getValidade2());
-
-
             }
             System.out.println("==========================================================================================");
         }else{

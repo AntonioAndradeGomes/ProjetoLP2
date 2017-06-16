@@ -1,8 +1,7 @@
 package ProjetoLP2;
 import java.text.ParseException;
 import java.util.Scanner;
-
-public class Fachada {
+public class Fachada { //Mais conhecida como central de menus 
     Loja loja = Loja.getInstance();
     
     public void metodo1() throws ParseException{
@@ -14,8 +13,6 @@ public class Fachada {
                     + "3: Menu de clientes\n"
                     + "4: Valores adiquiridos pela loja\n"
                     + "0: Sair\n");
-
-
             String var1 = t.next();
             if (var1.equals("1")){
                 Menu1();

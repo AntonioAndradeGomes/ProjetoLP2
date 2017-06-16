@@ -1,5 +1,4 @@
 package ProjetoLP2;
-
 import java.text.ParseException;
 
 public class Main {
